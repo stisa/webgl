@@ -6,8 +6,8 @@ Mostly taken from [mozilla webgl api](https://developer.mozilla.org/en-US/docs/W
 __NOTE: it is still incomplete and there are probably bugs__
 
 A couple of examples are provided in `/examples` 
-( they are direct translation of js code taken from mozilla tutorials and [webgl-lessons](https://github.com/tparisi/webgl-lessons), so  
-don't expect idiomatic nim code, I'll work on improving them )
+( they are direct translation of js code taken from mozilla tutorials and [webgl-lessons](https://github.com/tparisi/webgl-lessons), so
+don't expect idiomatic nim code. I'll work on improving them )
 
 Using this wrapper
 ------------------
@@ -21,3 +21,5 @@ Compiling to JS
 ```
 nim js <filename>
 ```
+
+You can find your compiled file inside `nimcache`

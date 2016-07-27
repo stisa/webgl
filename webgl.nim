@@ -92,7 +92,7 @@ type
 
         #State information
 
- #TODO  activeTexture* : proc(texture) {.nimcall.} #Selects the active texture unit.
+        #activeTexture* : proc(texture:auto) {.nimcall.} #Selects the active texture unit.
         blendColor* : proc(red, green, blue, alpha:GLclampf) {.nimcall.} #Sets the source and destination blending factors.
         blendEquation* : proc(mode:GLenum) {.nimcall.} #Sets both the RGB blend equation and alpha blend equation to a single equation.
         blendEquationSeparate* : proc(modeRGB, modeAlpha:GLenum) {.nimcall.} #Sets the RGB blend equation and alpha blend equation separately.
@@ -172,7 +172,7 @@ type
 #DONE?        texImage2D* : proc() {.nimcall.} #Specifies a 2D texture image.
 #DONE?        texSubImage2D* : proc() {.nimcall.} #Updates a sub-rectangle of the current WebGLTexture.
         texParameterf* : proc(target:GLenum, pname:GLenum, param:GLfloat ) {.nimcall.} #Sets texture parameters.
-        texParameteri* : proc(target:GLenum, pname:GLenum, param:GLint) {.nimcall.} #Sets texture parameters. 
+        texParameteri* : proc(target:GLenum, pname:GLenum, param:GLenum) {.nimcall.} #Sets texture parameters. 
         
         #Programs and shaders
 
@@ -224,6 +224,9 @@ type
         finish* : proc() {.nimcall.} #Blocks execution until all previously called commands are finished.
         flush* : proc() {.nimcall.} #Empties different 
 
+proc activeTexture* (gl:WebGLRenderingContext, texture:auto) = #Selects the active texture unit.
+    {. emit: "`gl`.activeTexture(`texture`);" .}
+
 proc getContextWebGL*(c: Canvas): WebGLRenderingContext = 
     {.emit: "`result` = `c`.getContext('webgl') || `c`.getContext('experimental-webgl');".}
 
@@ -255,16 +258,16 @@ proc getVertexAttrib*(gl:WebGLRenderingContext,index:GLuint, pname:GLenum):auto 
 #{.emit: "gl.texImage2D(target, level, internalformat, format, type, pixels);".}
 
 proc texImage2D*(gl:WebGLRenderingContext, target: GLenum, level: GLint, internalformat: GLint, width, height: GLsizei, border: GLint, format: GLenum, typ: GLenum, pixels:ArrayBufferView)=
-    {.emit: "gl.texImage2D(target, level, internalformat, width, height, border, format, type, pixels);".}
+    {.emit: "`gl`.texImage2D(`target`, `level`, `internalformat`, `width`, `height`, `border`, `format`, `typ`, `pixels`);".}
 
-proc texImage2D*(gl:WebGLRenderingContext, target: GLenum, level: GLint, internalformat: GLint, format: GLenum, typ: GLenum, pixels:dom.ImageElement)=
-    {.emit: "gl.texImage2D(target, level, internalformat, format, type, pixels);".}
+proc texImage2D*(gl:WebGLRenderingContext, target: GLenum, level: GLint, internalformat: GLenum, format: GLenum, typ: GLenum, pixels:dom.ImageElement)=
+    {.emit: "`gl`.texImage2D(`target`, `level`, `internalformat`, `format`, `typ`, `pixels`);".}
 
 proc texImage2D*(gl:WebGLRenderingContext, target: GLenum, level: GLint, internalformat: GLint, format: GLenum, typ: GLenum, pixels:Canvas)=
-    {.emit: "gl.texImage2D(target, level, internalformat, format, type, pixels);".}
+    {.emit: "`gl`.texImage2D(`target`, `level`, `internalformat`, `format`, `typ`, `pixels`);".}
 
 proc texImage2D*(gl:WebGLRenderingContext, target: GLenum, level: GLint, internalformat: GLint, format: GLenum, typ: GLenum, pixels:dom.EmbedElement)= #TODO
-    {.emit: "gl.texImage2D(target, level, internalformat, format, type, pixels);".}
+    {.emit: "`gl`.texImage2D(`target`, `level`, `internalformat`, `format`, `typ`, `pixels`);".}
 
 #proc texSubImage2D* (target:GLenum, level, xoffset, yoffset:GLint, format, typ:GLenum, ImageData? pixels)
 #		{. emit: "`gl`.texSubImage2D(`target`, `level`, `xoffset`, `yoffset`, `format`, `type`, `pixels`);" .}
@@ -303,3 +306,6 @@ proc traslate4* (a,b,c:auto):auto =
     # a: ?? , b: scale, c: ??, d: ??, e: matrix
 proc perspective4* (a,b,c,d,e:auto):auto =
     {. emit : "function frustum(a,b,c,d,e,g,f){var h=b-a,i=d-c,j=g-e;f[0]=e*2/h;f[1]=0;f[2]=0;f[3]=0;f[4]=0;f[5]=e*2/i;f[6]=0;f[7]=0;f[8]=(b+a)/h;f[9]=(d+c)/i;f[10]=-(g+e)/j;f[11]=-1;f[12]=0;f[13]=0;f[14]=-(g*e*2)/j;f[15]=0;return f;};`a`=`c`*Math.tan(`a`*Math.PI/360);`b`=`a`*`b`;`result` = frustum(-`b`,`b`,-`a`,`a`,`c`,`d`,`e`);" .}
+
+proc uniform1i*(gl:WebGLRenderingContext,location:WebGLUniformLocation,v0:int)=
+    {. emit: "`gl`.uniform1i(`location`, `v0`);".}

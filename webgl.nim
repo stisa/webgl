@@ -92,7 +92,6 @@ type
 
         #State information
 
-#DONE activeTexture* : proc(texture:auto) {.nimcall.} #Selects the active texture unit.
         blendColor* : proc(red, green, blue, alpha:GLclampf) {.nimcall.} #Sets the source and destination blending factors.
         blendEquation* : proc(mode:GLenum) {.nimcall.} #Sets both the RGB blend equation and alpha blend equation to a single equation.
         blendEquationSeparate* : proc(modeRGB, modeAlpha:GLenum) {.nimcall.} #Sets the RGB blend equation and alpha blend equation separately.
@@ -134,7 +133,6 @@ type
 #TODO        bufferSubData* : proc(target:GLenum, offset:GLintptr, data) {.nimcall.} #Updates buffer data starting at a passed offset.
         createBuffer* : proc():WebGLBuffer  {.nimcall.} #Creates a WebGLBuffer object.
         deleteBuffer* : proc(buffer:WebGLBuffer ) {.nimcall.} #Deletes a WebGLBuffer object.
-#DONE        #getBufferParameter* : proc(target, pname:GLenum): TODO {.nimcall.} #Returns information about the buffer.
         isBuffer* : proc(buffer:WEbGLBuffer):GLboolean {.nimcall.} #Returns a Boolean indicating if the passed buffer is valid. 
         
         #Framebuffers
@@ -144,7 +142,6 @@ type
         deleteFramebuffer* : proc(framebuffer:WebGLFramebuffer) {.nimcall.} #Deletes a WebGLFrameBuffer object.
         framebufferRenderbuffer* : proc(target, attachment, renderbuffertarget:GLenum, renderbuffer:WebGLRenderbuffer) {.nimcall.} #Attaches a WebGLRenderingBuffer object to a WebGLFrameBuffer object.
         framebufferTexture2D* : proc(target, attachment, textarget:GLenum, texture:WebGLTexture, level:Glint) {.nimcall.} #Attaches a textures image to a WebGLFrameBuffer object.
-#DONE        getFramebufferAttachmentParameter* : proc(target, attachment, pname:GLenum):TODO {.nimcall.} #Returns information about the framebuffer.
         isFramebuffer* : proc(framebuffer:WebGLFramebuffer):GLboolean {.nimcall.} #Returns a Boolean indicating if the passed WebGLFrameBuffer object is valid.
         readPixels* : proc(x, y:GLint, width, height:GLsizei, format, typ:GLenum, pixels:ArrayBufferView) {.nimcall.} #Reads a block of pixels from the WebGLFrameBuffer. 
         
@@ -153,7 +150,6 @@ type
         bindRenderbuffer* : proc(target:Glenum, renderbuffer: WebGLRenderbuffer) {.nimcall.} #Binds a WebGLRenderBuffer object to a given target.
         createRenderbuffer* : proc():WebGLRenderbuffer {.nimcall.} #Creates a WebGLRenderBuffer object.
         deleteRenderbuffer* : proc(renderbuffer:WebGLRenderbuffer) {.nimcall.} #Deletes a WebGLRenderBuffer object.
-#DONE        getRenderbufferParameter* : proc(target,pname:GLenum): TODO {.nimcall.} #Returns information about the renderbuffer.
         isRenderbuffer* : proc(renderbuffer:WebGLRenderbuffer): GLboolean {.nimcall.} #Returns a Boolean indicating if the passed WebGLRenderingBuffer is valid.
         renderbufferStorage* : proc(target, internalFormat:GLenum, width, height:GLsizei) {.nimcall.} #Creates a renderbuffer data store.
 
@@ -167,7 +163,6 @@ type
         createTexture* : proc():WebGLTexture {.nimcall.} #Creates a WebGLTexture object.
         deleteTexture* : proc(texture:WebGLTexture) {.nimcall.} #Deletes a WebGLTexture object.
         generateMipmap* : proc(target:GLenum) {.nimcall.} #Generates a set of mipmaps for a WebGLTexture object.
-#DONE        getTexParameter* : proc(target:GLenum,pname:GLenum): TODO {.nimcall.} #Returns information about the texture.
         isTexture* : proc(texture:WebGLTexture):GLboolean {.nimcall.} #Returns a Boolean indicating if the passed WebGLTexture is valid.
 #DONE?        texImage2D* : proc() {.nimcall.} #Specifies a 2D texture image.
 #DONE?        texSubImage2D* : proc() {.nimcall.} #Updates a sub-rectangle of the current WebGLTexture.
@@ -185,9 +180,7 @@ type
         deleteShader* : proc(shader:WebGLShader) {.nimcall.} #Deletes a WebGLShader.
         detachShader* : proc(program:WebGLProgram, shader:WebGLShader) {.nimcall.} #Detaches a WebGLShader.
         getAttachedShaders* : proc(program:WebGLProgram): seq[WebGLShader] {.nimcall.} #Returns a list of WebGLShader objects attached to a WebGLProgram.
-#DONE        getProgramParameter* : proc(program:WebGLProgram, pname:Glenum):auto {.nimcall.} #Returns information about the program.
         getProgramInfoLog* : proc(program:WebGLProgram):cstring {.nimcall.} #Returns the information log for a WebGLProgram object.
-#DONE        getShaderParameter* : proc(shader:WebGLShader, pname:Glenum):TODO {.nimcall.} #Returns information about the shader.
         getShaderPrecisionFormat* : proc(shaderType,precisionType: GLenum):WebGLShaderPrecisionFormat {.nimcall.} #Returns a WebGLShaderPrecisionFormat object describing the precision for the numeric format of the shader.
         getShaderInfoLog* : proc(shader:WebGLShader):cstring {.nimcall.} #Returns the information log for a WebGLShader object.
         getShaderSource* : proc(shader:WebGLShader):cstring {.nimcall.} #Returns the source code of a WebGLShader as a string.
@@ -205,9 +198,7 @@ type
         getActiveAttrib* : proc(program:WebGLProgram, index:Gluint):WebGLActiveInfo {.nimcall.} #Returns information about an active attribute variable.
         getActiveUniform* : proc(program:WebGLProgram, index:GLuint):WebGLActiveInfo {.nimcall.} #Returns information about an active uniform variable.
         getAttribLocation* : proc(program:WebGLProgram, name:cstring):GLuint {.nimcall.} #Returns the location of an attribute variable.
-#DONE        getUniform* : proc(program:WebGLProgram, location:WebGLUniformLocation):TODO {.nimcall.} #Returns the value of a uniform variable at a given location.
         getUniformLocation* : proc(program:WebGLProgram, name:cstring):WebGLUniformLocation {.nimcall.} #Returns the location of a uniform variable.
-#DONE        getVertexAttrib* : proc(index:GLuint, pname:GLenum):TODO {.nimcall.} #Returns information about a vertex attribute at a given position.
         getVertexAttribOffset* : proc(index:GLuint, pname:GLenum):GLsizeiptr {.nimcall.} #Returns the address of a given vertex attribute.
 #        uniform[1234][fi][v]* : proc(location:WebGLUniformLocation, TODO) {.nimcall.} #Specifies a value for a uniform variable.
 #        uniformMatrix[234]fv* : proc(location:WebGLUniformLocation, transpose:GLboolean, value:Float32Array) {.nimcall.} #Specifies a matrix value for a uniform variable.
@@ -226,9 +217,6 @@ type
 
 proc activeTexture* (gl:WebGLRenderingContext, texture:auto) = #Selects the active texture unit.
     {. emit: "`gl`.activeTexture(`texture`);" .}
-
-proc getContextWebGL*(c: Canvas): WebGLRenderingContext = 
-    {.emit: "`result` = `c`.getContext('webgl') || `c`.getContext('experimental-webgl');".}
 
 proc getProgramParameter* (gl:WebGLRenderingContext,program:WebGLProgram, pname:GLenum):auto= #Returns information about the program.
     {.emit: "`result` = `gl`.getProgramParameter(`program`,`pname`);".}
@@ -284,8 +272,20 @@ proc texSubImage2D* (target:GLenum, level, xoffset, yoffset:GLint, format, typ:G
 proc texSubImage2D* (target:GLenum, level, xoffset, yoffset:GLint, format, typ:GLenum, pixels:EmbedElement)=
     {. emit: "`gl`.texSubImage2D(`target`, `level`, `xoffset`, `yoffset`, `format`, `type`, `pixels`);" .}
 
+
+proc uniform1i*(gl:WebGLRenderingContext,location:WebGLUniformLocation,v0:int)=
+    {. emit: "`gl`.uniform1i(`location`, `v0`);".}
+
+
+#Helpers
 proc f32A* (s:seq[float]):Float32Array = #helper
     {.emit: "`result` = new Float32Array(`s`);".}
+
+proc getContextWebGL*(c: Canvas): WebGLRenderingContext = 
+    {.emit: "`result` = `c`.getContext('webgl') || `c`.getContext('experimental-webgl');".}
+
+proc getWebGLContext*(c: Canvas): WebGLRenderingContext = 
+    {.emit: "`result` = `c`.getContext('webgl') || `c`.getContext('experimental-webgl');".}
      
 #dom.window.onload = proc (e: dom.Event) =
 #    let c = dom.document.getElementById("glcanvas").Canvas
@@ -294,7 +294,6 @@ proc f32A* (s:seq[float]):Float32Array = #helper
 #    ctx.clear(COLOR_BUFFER_BIT)
 
 
-#Helpers
 # a: matrix in which to store identity
 proc identity4* (a:auto):auto =
     {. emit: "`a`[0]=1;`a`[1]=0;`a`[2]=0;`a`[3]=0;`a`[4]=0;`a`[5]=1;`a`[6]=0;`a`[7]=0;`a`[8]=0;`a`[9]=0;`a`[10]=1;`a`[11]=0;`a`[12]=0;`a`[13]=0;`a`[14]=0;`a`[15]=1;`result`=`a`" .}
@@ -306,6 +305,3 @@ proc traslate4* (a,b,c:auto):auto =
     # a: ?? , b: scale, c: ??, d: ??, e: matrix
 proc perspective4* (a,b,c,d,e:auto):auto =
     {. emit : "function frustum(a,b,c,d,e,g,f){var h=b-a,i=d-c,j=g-e;f[0]=e*2/h;f[1]=0;f[2]=0;f[3]=0;f[4]=0;f[5]=e*2/i;f[6]=0;f[7]=0;f[8]=(b+a)/h;f[9]=(d+c)/i;f[10]=-(g+e)/j;f[11]=-1;f[12]=0;f[13]=0;f[14]=-(g*e*2)/j;f[15]=0;return f;};`a`=`c`*Math.tan(`a`*Math.PI/360);`b`=`a`*`b`;`result` = frustum(-`b`,`b`,-`a`,`a`,`c`,`d`,`e`);" .}
-
-proc uniform1i*(gl:WebGLRenderingContext,location:WebGLUniformLocation,v0:int)=
-    {. emit: "`gl`.uniform1i(`location`, `v0`);".}

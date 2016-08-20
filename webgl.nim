@@ -92,7 +92,7 @@ type
 
         #State information
 
-        #activeTexture* : proc(texture:auto) {.nimcall.} #Selects the active texture unit.
+#DONE activeTexture* : proc(texture:auto) {.nimcall.} #Selects the active texture unit.
         blendColor* : proc(red, green, blue, alpha:GLclampf) {.nimcall.} #Sets the source and destination blending factors.
         blendEquation* : proc(mode:GLenum) {.nimcall.} #Sets both the RGB blend equation and alpha blend equation to a single equation.
         blendEquationSeparate* : proc(modeRGB, modeAlpha:GLenum) {.nimcall.} #Sets the RGB blend equation and alpha blend equation separately.

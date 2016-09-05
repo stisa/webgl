@@ -1,3 +1,8 @@
+TODO
+====
+- Some utilites: setting up a context, reading errors, emitting to console
+- Have a module for `Webgl2`
+
 webgl.nim
 =========
 Experimental wrapper to webgl for Nim (JS backend).  
@@ -22,4 +27,5 @@ Compiling to JS
 nim js <filename>
 ```
 
-You can find your compiled file inside `nimcache`
+You can find your compiled file inside `nimcache`.  
+Or just pass `-o:<file>` to nim to have it compile to that file.

@@ -1,4 +1,4 @@
-import dom,webgl,math
+import dom,../webgl,math
 
 #utils
 proc consolelog (s:auto) {.inline.}= {. emit : "console.log(`s`);" .}
@@ -17,7 +17,7 @@ let x = [1,2,3]
 var y = x
 var z = x
 y[0] = 10
-consoleLog($z[0])
+#consoleLog($z[0])
 
 const
   startX = [-0.75,  0.75, -0.75,  0.75]

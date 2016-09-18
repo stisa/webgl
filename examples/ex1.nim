@@ -3,7 +3,7 @@ import dom, webgl
 var vertexPositionAttribute : GLuint 
 
 proc getShader(gl:WebGLRenderingContext, id:string, kind:char):WebGLShader =
-    var shaderScript = dom.document.getElementById(id.cstring)
+    var shaderScript = dom.document.getElementById(id)
     if (shaderScript==nil): return
     var theSource : string = ""
     var currentChild = shaderScript.firstChild
@@ -16,7 +16,7 @@ proc getShader(gl:WebGLRenderingContext, id:string, kind:char):WebGLShader =
     elif(kind == 'v'): result = gl.createShader(VERTEX_SHADER)
     else: return #unknown shader type
 
-    gl.shaderSource(result, theSource.cstring)
+    gl.shaderSource(result, theSource)
 
     # Compile shader
     gl.compileShader(result)
@@ -59,7 +59,7 @@ proc initBuffers(gl:WebGLRenderingContext) =
         -1.0, -1.0, 0.0
     ];
     
-    gl.bufferData(ARRAY_BUFFER, vertices.f32A, STATIC_DRAW);
+    gl.bufferData(ARRAY_BUFFER, vertices, STATIC_DRAW);
 
 
 proc setMatrixUniforms(gl:WebGLRenderingContext,pm, mv: Float32Array) =
@@ -72,11 +72,11 @@ proc setMatrixUniforms(gl:WebGLRenderingContext,pm, mv: Float32Array) =
 proc drawScene(gl:WebGLRenderingContext) =
     gl.clear(COLOR_BUFFER_BIT or DEPTH_BUFFER_BIT);
     
-    var perspectiveMatrix = newSeq[float](16).f32A
+    var perspectiveMatrix = newSeq[float](16)
     perspective4(45, 640.0/480.0, 0.1, 100.0, perspectiveMatrix);
     
 
-    var mv = newSeq[float](16).f32A
+    var mv = newSeq[float](16)
     mv.identity4();
     mv.traslate4([-0.0, 0.0, -6.0],mv);
     

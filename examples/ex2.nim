@@ -13,7 +13,6 @@ proc translate4 (a,b,c:auto):auto =
 proc perspective4 (a,b,c,d,e:auto):auto =
     {. emit : "function frustum(a,b,c,d,e,g,f){var h=b-a,i=d-c,j=g-e;f[0]=e*2/h;f[1]=0;f[2]=0;f[3]=0;f[4]=0;f[5]=e*2/i;f[6]=0;f[7]=0;f[8]=(b+a)/h;f[9]=(d+c)/i;f[10]=-(g+e)/j;f[11]=-1;f[12]=0;f[13]=0;f[14]=-(g*e*2)/j;f[15]=0;return f;};`a`=`c`*Math.tan(`a`*Math.PI/360);`b`=`a`*`b`;`result` = frustum(-`b`,`b`,-`a`,`a`,`c`,`d`,`e`);" .}
 
-proc log (s:auto) {.inline.}= {. emit : "console.log(`s`);" .}
 #######
 
 proc initGL(canvas:Canvas) = 
@@ -73,8 +72,8 @@ proc initShaders() =
 
 
 
-var mvMatrix :Float32Array = newSeq[float](16).f32A # 4x4, so 16 elements
-var pMatrix :Float32Array= newSeq[float](16).f32A
+var mvMatrix :Float32Array = newSeq[float](16) # 4x4, so 16 elements
+var pMatrix :Float32Array= newSeq[float](16)
 
 proc setMatrixUniforms() =
     gl.uniformMatrix4fv(pMatrixUniform, false, pMatrix);
@@ -112,26 +111,26 @@ proc initBuffers() =
 
 
 proc drawScene() =
-    gl.viewport(0.GLint, 0.GLint, viewportWidth.GLsizei, viewportHeight.GLsizei);
+    gl.viewport(0, 0, viewportWidth, viewportHeight);
     gl.clear(COLOR_BUFFER_BIT or DEPTH_BUFFER_BIT);
 
     perspective4(45, viewportWidth / viewportHeight, 0.1, 100.0, pMatrix);
         
     identity4(mvMatrix);
 
-    traslate4(mvMatrix, @[-1.5, 0.0, -7.0].f32A, mvMatrix);
+    traslate4(mvMatrix, @[-1.5, 0.0, -7.0], mvMatrix);
 
     gl.bindBuffer(ARRAY_BUFFER, triangleVertexPositionBuffer);
-    gl.vertexAttribPointer(vertexPositionAttribute, tin.itemSize.GLint, FLOAT, false, 0, 0);
+    gl.vertexAttribPointer(vertexPositionAttribute, tin.itemSize, FLOAT, false, 0, 0);
     setMatrixUniforms();
-    gl.drawArrays(TRIANGLES, 0, tin.numItems.GLint);
+    gl.drawArrays(TRIANGLES, 0, tin.numItems);
 
 
-    traslate4(mvMatrix, @[3.0, 0.0, 0.0].f32A, mvMatrix);
+    traslate4(mvMatrix, @[3.0, 0.0, 0.0], mvMatrix);
     gl.bindBuffer(ARRAY_BUFFER, squareVertexPositionBuffer);
-    gl.vertexAttribPointer(vertexPositionAttribute, vin.itemSize.GLint, FLOAT, false, 0, 0);
+    gl.vertexAttribPointer(vertexPositionAttribute, vin.itemSize, FLOAT, false, 0, 0);
     setMatrixUniforms();
-    gl.drawArrays(TRIANGLE_STRIP, 0.GLint, vin.numItems.GLsizei);
+    gl.drawArrays(TRIANGLE_STRIP, 0, vin.numItems);
 
 
 

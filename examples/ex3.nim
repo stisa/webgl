@@ -1,11 +1,18 @@
 import dom,../webgl,math
 
+#utils
+
+proc initWebGL(canvas:webgl.Canvas): WebGLRenderingContext {.inline.} = webgl.getContextWebGL(canvas)
+
+proc checkShader(gl:WebGLRenderingContext,shader:WebGLShader) = 
+  if not gl.getStatus(shader): log gl.getShaderInfoLog(shader)
+proc checkProgram(gl:WebGLRenderingContext,prog:WebGLProgram) =
+  if not gl.getStatus(prog): log gl.getProgramInfoLog(prog)  
 
 let x = [1,2,3]
 var y = x
 var z = x
 y[0] = 10
-#log($z[0])
 
 const
   startX = [-0.75,  0.75, -0.75,  0.75]
@@ -44,7 +51,7 @@ void main(void) {
 
 # Create context
 var canv = dom.document.getElementById("canvas").Canvas
-var gl = getContextWebgl(canv)
+var gl = initWebGL(canv)
 
 # Create a model
 var packedModel = newSeq[float](makeModel().len)# newFloat32Array(makeModel().len.float)
@@ -78,7 +85,7 @@ proc draw(gl:WebGLRenderingContext)=
 
     # Upload values for model
     let model = makeModel()
-    packedModel = model.f32A
+    packedModel = model
     #for i in 0..<model.len:
     #    float32Set(packedModel, i.float, model[i])
     gl.bindBuffer(webgl.ARRAY_BUFFER, vertices)
@@ -86,7 +93,7 @@ proc draw(gl:WebGLRenderingContext)=
     gl.bindBuffer(webgl.ARRAY_BUFFER, nil)
 
     # Set display properties and clear screen
-    gl.viewport(0, 0, gl.canvas.width.GLsizei, gl.canvas.height.GLsizei)
+    gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
     gl.clearColor(bg, 0.0, 0.0, 1.0)
     gl.enable(webgl.DEPTH_TEST)
     gl.depthFunc(webgl.LEQUAL) # Near things obscure far things
@@ -99,7 +106,7 @@ proc draw(gl:WebGLRenderingContext)=
     gl.enableVertexAttribArray(positionAttrib)
 
     # Draw
-    gl.drawArrays(webgl.LINES, 0, (model.len/2).GLsizei )
+    gl.drawArrays(webgl.LINES, 0, (model.len div 2) )
 
     # State updates: do a silly, trivial animation.
     # Wobble each of the four anchors for the model at a slightly different rate.

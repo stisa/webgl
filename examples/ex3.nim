@@ -1,23 +1,11 @@
 import dom,../webgl,math
 
-#utils
-proc consolelog (s:auto) {.inline.}= {. emit : "console.log(`s`);" .}
-
-proc initWebGL(canvas:webgl.Canvas): WebGLRenderingContext {.inline.} = webgl.getContextWebGL(canvas)
-
-proc checkShader(gl:WebGLRenderingContext,shader:WebGLShader) =
-  {. emit: "if (!`gl`.getShaderParameter(`shader`, `gl`.COMPILE_STATUS)) {console.error(`gl`.getShaderInfoLog(`shader`));}; ".}  
-
-proc checkProgram(gl:WebGLRenderingContext,prog:WebGLProgram) =
-  {. emit: "if (!`gl`.getProgramParameter(`prog`, `gl`.LINK_STATUS)) {console.error(`gl`.getProgramInfoLog(`prog`));}; ".}  
-
-#############################
 
 let x = [1,2,3]
 var y = x
 var z = x
 y[0] = 10
-#consoleLog($z[0])
+#log($z[0])
 
 const
   startX = [-0.75,  0.75, -0.75,  0.75]
@@ -56,10 +44,10 @@ void main(void) {
 
 # Create context
 var canv = dom.document.getElementById("canvas").Canvas
-var gl = initWebGL(canv)
+var gl = getContextWebgl(canv)
 
 # Create a model
-var packedModel = newSeq[float](makeModel().len).f32A# newFloat32Array(makeModel().len.float)
+var packedModel = newSeq[float](makeModel().len)# newFloat32Array(makeModel().len.float)
 var vertices = gl.createBuffer()
 
 # Create vertex shader

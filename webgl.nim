@@ -300,9 +300,9 @@ proc log*(str:varargs[auto]) = {.emit: "console.log(`str`);".}
 converter toFloat32Array*(a: seq[float32]): Float32Array = {.emit: "`result` = new Float32Array(`a`);".}
 converter toFloat32Array*(a: seq[float]): Float32Array = {.emit: "`result` = new Float32Array(`a`);".}
 
-converter toUint32Array*(a: openarray[uint]): Uint32Array = {.emit: "`result` = new Uint32Array(`a`);".}
+converter toUint32Array*(a: seq[uint]): Uint32Array = {.emit: "`result` = new Uint32Array(`a`);".}
 
-converter toInt32Array*(a: openarray[int]): Int32Array = {.emit: "`result` = new Int32Array(`a`);".}
+converter toInt32Array*(a: seq[int]): Int32Array = {.emit: "`result` = new Int32Array(`a`);".}
 
 
 proc getContextWebGL*(c: Canvas): WebGLRenderingContext = 

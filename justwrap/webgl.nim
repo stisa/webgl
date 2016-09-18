@@ -234,7 +234,7 @@ type
       
 proc bufferData*(gl:WebGLRenderingContext, target:GLenum, size:GLsizeiptr, usage:GLenum) = #Updates buffer data.
   {. emit: "`gl`.bufferData(`target`,`size`,`usage`);" .} 
-proc bufferData*(gl:WebGLRenderingContext, target:GLenum, data:Float32Array, usage:GLenum) = #Updates buffer data.
+proc bufferData*(gl:WebGLRenderingContext, target:GLenum, data:auto, usage:GLenum) = #Updates buffer data.
   {. emit: "`gl`.bufferData(`target`,`data`,`usage`);" .}
 
 proc bufferSubData*(gl:WebGLRenderingContext,target:GLenum, offset:GLintptr, data:auto) =#Updates buffer data starting at a passed offset.
@@ -245,11 +245,9 @@ proc getParameter* (pname:GLenum):auto {.importc.} #Returns a value for the pass
 proc activeTexture* (gl:WebGLRenderingContext, texture:auto) {.importc.} #Selects the active texture unit.
 
 # FIXME: this does not handle 
-# gl.DELETE_STATUS: Returns a GLboolean indicating whether or not the program is flagged for deletion.
-# gl.LINK_STATUS: Returns a GLboolean indicating whether or not the last link operation was successful.
-# gl.VALIDATE_STATUS: Returns a GLboolean indicating whether or not the last validation operation was successful
-# Use getStatus(Shader|Program) instead
-
+#gl.DELETE_STATUS: Returns a GLboolean indicating whether or not the program is flagged for deletion.
+#gl.LINK_STATUS: Returns a GLboolean indicating whether or not the last link operation was successful.
+#gl.VALIDATE_STATUS: Returns a GLboolean indicating whether or not the last validation operation was successful
 proc getProgramParameter* (gl:WebGLRenderingContext,program:WebGLProgram, pname:GLenum):GLint{.importc.} #Returns information about the program.
 
 proc getBufferParameter* (gl:WebGLRenderingContext,target, pname:GLenum): auto {.importc.} #Returns information about the buffer.
@@ -264,8 +262,8 @@ proc getShaderParameter* (gl:WebGLRenderingContext,shader:WebGLShader, pname:Gle
 
 proc getUniform* (gl:WebGLRenderingContext,program:WebGLProgram, location:WebGLUniformLocation):auto {.importc.} #Returns the value of a uniform variable at a given location.
 
-proc getVertexAttrib*(gl:WebGLRenderingContext,index:GLuint, pname:GLenum):WebGLBuffer = #Returns information about a vertex attribute at a given position.
-  {. emit: "`result`=`gl`.getVertexAttrib(`index`,`pname`);" .}
+proc getVertexAttrib*(gl:WebGLRenderingContext,index:GLuint, pname:GLenum):auto {.importc.} #Returns information about a vertex attribute at a given position.
+
 #proc texImage2D*(gl:WebGLRenderingContext, target: GLenum, level: GLint, internalformat: GLint, format: GLenum, typ: GLenum, pixels:ImageData)= #TODO
 #{.emit: "gl.texImage2D(target, level, internalformat, format, type, pixels);".}
 
@@ -291,19 +289,8 @@ proc texSubImage2D* (target:GLenum, level, xoffset, yoffset:GLint, format, typ:G
 #Helpers
 proc f32A* (s:openarray[float]):Float32Array = #helper
   {.emit: "`result` = new Float32Array(`s`);".}
-proc ui16A* (s:openarray[int]):UInt16Array = #helper
+proc iA* (s:openarray[int]):Int32Array = #helper
   {.emit: "`result` = new UInt16Array(`s`);".}
-
-
-proc log*(str:varargs[auto]) = {.emit: "console.log(`str`);".}
-
-converter toFloat32Array*(a: seq[float32]): Float32Array = {.emit: "`result` = new Float32Array(`a`);".}
-converter toFloat32Array*(a: seq[float]): Float32Array = {.emit: "`result` = new Float32Array(`a`);".}
-
-converter toUint32Array*(a: openarray[uint]): Uint32Array = {.emit: "`result` = new Uint32Array(`a`);".}
-
-converter toInt32Array*(a: openarray[int]): Int32Array = {.emit: "`result` = new Int32Array(`a`);".}
-
 
 proc getContextWebGL*(c: Canvas): WebGLRenderingContext = 
   {.emit: "`result` = `c`.getContext('webgl') || `c`.getContext('experimental-webgl');".}
@@ -326,4 +313,4 @@ proc perspective4* (a,b,c,d,e:auto):auto =
 proc getStatus*(gl:WebGLRenderingContext,what:WebglShader): GLboolean =
   {. emit:"`result` = `gl`.getShaderParameter(`what`, `gl`.COMPILE_STATUS);" .}
 proc getStatus*(gl:WebGLRenderingContext,what:WebglProgram): GLboolean =
-  {. emit:"`result` = `gl`.getProgramParameter(`what`, `gl`.LINK_STATUS);" .}
+  {. emit:"`result` = `gl`.getProgramParameter(`what`, `gl`.COMPILE_STATUS);" .}

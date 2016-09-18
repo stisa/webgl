@@ -4,26 +4,25 @@ type
 
     #These types are used within a WebGLRenderingContext.
 
-    GLint* = int # long #32-bit twos complement signed integer. 
-    GLsizei* = int # long #Used for sizes (e.g. width and height of the drawing buffer). 
-    
+    GLenum* = uint32 #unsigned long # Used for enums. See also the list of constants. 
     GLboolean* = bool # boolean #A Boolean. 
-    
-    GLenum* = uint #unsigned long # Used for enums. See also the list of constants. 
-    GLbitfield* = uint #unsigned long #A bit field that stores multiple, logical bits. Used for example in WebGLRenderingContext.clear(). 
-    GLushort* = uint # unsigned short #16-bit twos complement unsigned integer. 
-    GLuint* = uint # unsigned long #32-bit twos complement unsigned integer. 
-    
-    GLshort* = uint # short #16-bit twos complement signed integer. 
-    
+    GLbitfield* = uint32 #unsigned long #A bit field that stores multiple, logical bits. Used for example in WebGLRenderingContext.clear(). 
+    GLbyte* = byte # byte #8-bit twos complement signed integer. 
+    GLshort* = uint16 # short #16-bit twos complement signed integer. 
+    GLint* = int32 # long #32-bit twos complement signed integer. 
+    GLsizei* = int32 # long #Used for sizes (e.g. width and height of the drawing buffer). 
     GLintptr* = int64 # long long #Special type for pointer arithmetic. 
     GLsizeiptr* = int64 # long long #Special type for pointer arithmetic. 
-    
     GLubyte* = byte # octet #8-bit twos complement unsigned integer. 
-    GLbyte* = byte # byte #8-bit twos complement signed integer. 
-    
+    GLushort* = uint32 # unsigned short #16-bit twos complement unsigned integer. 
+    GLuint* = uint32 # unsigned long #32-bit twos complement unsigned integer. 
     GLfloat* = float # unrestricted float #32-bit IEEE floating point number. 
     GLclampf* = float # unrestricted TODO float #Clamped 32-bit IEEE floating point number. 
+
+    #WebGL 2
+
+    #These types are used within a WebGL2RenderingContext. All WebGL 1 types are used as well.
+    GLint64* = int64 # long long #Signed 64-bit integer number 
 
 
 # WEBGL constants

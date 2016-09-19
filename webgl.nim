@@ -298,6 +298,7 @@ proc ui16A* (s:openarray[int]):UInt16Array = #helper
 proc log*(str:varargs[auto]) = {.emit: "console.log(`str`);".}
 
 converter toFloat32Array*(a: seq[float32]): Float32Array = {.emit: "`result` = new Float32Array(`a`);".}
+
 converter toFloat32Array*(a: seq[float]): Float32Array = {.emit: "`result` = new Float32Array(`a`);".}
 
 converter toUint32Array*(a: seq[uint]): Uint32Array = {.emit: "`result` = new Uint32Array(`a`);".}
@@ -308,9 +309,15 @@ converter toInt32Array*(a: seq[int]): Int32Array = {.emit: "`result` = new Int32
 proc getContextWebGL*(c: Canvas): WebGLRenderingContext = 
   {.emit: "`result` = `c`.getContext('webgl') || `c`.getContext('experimental-webgl');".}
 
-proc getWebGLContext*(c: Canvas): WebGLRenderingContext = 
-  {.emit: "`result` = `c`.getContext('webgl') || `c`.getContext('experimental-webgl');".}
-    
+proc requestAnimationFrame*(fn:proc(time:float))= {.emit:"window.requestAnimationFrame(`fn`);".} 
+
+proc getStatus*(gl:WebGLRenderingContext,what:WebglShader): GLboolean =
+  {. emit:"`result` = `gl`.getShaderParameter(`what`, `gl`.COMPILE_STATUS);" .}
+proc getStatus*(gl:WebGLRenderingContext,what:WebglProgram): GLboolean =
+  {. emit:"`result` = `gl`.getProgramParameter(`what`, `gl`.LINK_STATUS);" .}
+
+
+#[Deprecable?]#
 # a: matrix in which to store identity
 proc identity4* (a:auto):auto =
   {. emit: "`a`[0]=1;`a`[1]=0;`a`[2]=0;`a`[3]=0;`a`[4]=0;`a`[5]=1;`a`[6]=0;`a`[7]=0;`a`[8]=0;`a`[9]=0;`a`[10]=1;`a`[11]=0;`a`[12]=0;`a`[13]=0;`a`[14]=0;`a`[15]=1;`result`=`a`" .}
@@ -323,7 +330,3 @@ proc traslate4* (a,b,c:auto):auto =
 proc perspective4* (a,b,c,d,e:auto):auto =
   {. emit : "function frustum(a,b,c,d,e,g,f){var h=b-a,i=d-c,j=g-e;f[0]=e*2/h;f[1]=0;f[2]=0;f[3]=0;f[4]=0;f[5]=e*2/i;f[6]=0;f[7]=0;f[8]=(b+a)/h;f[9]=(d+c)/i;f[10]=-(g+e)/j;f[11]=-1;f[12]=0;f[13]=0;f[14]=-(g*e*2)/j;f[15]=0;return f;};`a`=`c`*Math.tan(`a`*Math.PI/360);`b`=`a`*`b`;`result` = frustum(-`b`,`b`,-`a`,`a`,`c`,`d`,`e`);" .}
 
-proc getStatus*(gl:WebGLRenderingContext,what:WebglShader): GLboolean =
-  {. emit:"`result` = `gl`.getShaderParameter(`what`, `gl`.COMPILE_STATUS);" .}
-proc getStatus*(gl:WebGLRenderingContext,what:WebglProgram): GLboolean =
-  {. emit:"`result` = `gl`.getProgramParameter(`what`, `gl`.LINK_STATUS);" .}

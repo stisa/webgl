@@ -1,59 +1,55 @@
 <!DOCTYPE html>
 <html lang="eu">
+
   <head>
-    <title>Test2</title>
-    <script id="shader-fs" type="x-shader/x-fragment">precision mediump float;
-    void main(void) { 
-    gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
-    }</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script id="shader-vs" type="x-shader/x-vertex">attribute vec3 aVertexPosition;
-    uniform mat4 uMVMatrix;
-    uniform mat4 uPMatrix;
-    void main(void) {
-    gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
-    }</script>
+  <meta name="description" content="A webgl wrapper for the nim programming language">
+  <meta name="author" content="stisa">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/github.css">
+  <link rel="apple-touch-icon-precomposed" href="/favicon-152.png">
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  <meta name="msapplication-TileImage" content="/favicon-144.png">
+  <title>Example 2</title>
+  <script id="shader-fs" type="x-shader/x-fragment">precision mediump float;
+  void main(void) { 
+  gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+  }</script>
 
-    <link rel="icon" href="/webgl/favicon.png"/>
-      <meta charset="utf-8">
+  <script id="shader-vs" type="x-shader/x-vertex">attribute vec3 aVertexPosition;
+  uniform mat4 uMVMatrix;
+  uniform mat4 uPMatrix;
+  void main(void) {
+  gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+  }</script>
 
-      <style>
-          #window1 {
-              margin: 2em auto 0 auto;
-          }
-          .sidebar {
-            background-color: rgba(0,180,0,0.5);
-            font-family: sans-serif;
-          }
-          .sidebar>*  {
-            display: inline-block;
-            padding-bottom: 0.2em;
-            padding-left: 1em;
-          }
-          a {
-            text-decoration: none;
-            color: white;
-          }
-          a:visited {
-            color: white;
-          }
-      </style>
-
-    <script src="/webgl/ex2.js"></script>
-  </head>
-
-<body style="padding: 0; margin: 0; background-color: white;">
+</head>
+<body>
   <header class="sidebar">
-    <h3><a href="/">Home</a></h3>
-    <a href="/articles/">Blog</a>
-    <a href="http://stisa.space/about/">About me</a>
-    <h1>Example 2</h1>  
+
+    <h3>Menu</h3>
+
+    <div class="menu">
+
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/about/">About Me</a>
+      <br/>
+      <a href="/webgl/">Webgl</a>
+    </div>
+   
   </header>
-        
-  <canvas id="glcanvas" width="640" height="480">
-    Your browser doesn't appear to support the 
-    <code>&lt;canvas&gt;</code> element.
-  </canvas>
+  <section class="content">
+    <h2>Example 2</h2>
+    <canvas id="glcanvas" width="640" height="480">
+      Your browser doesn't appear to support the 
+      <code>&lt;canvas&gt;</code> element.
+    </canvas>
+    <script src="/webgl/ex2.js"></script>
+  </section>
 </body>
 
 </html>

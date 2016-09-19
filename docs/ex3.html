@@ -1,58 +1,44 @@
 <!DOCTYPE html>
 <html lang="eu">
+
   <head>
-    <title>Example 3</title>   
-    <style>
-      * { margin:0; padding:0; } /* to remove the top and left whitespace */
-      html, body { width:100%; height:100%; } /* just to be sure these are full screen*/
-      canvas { display:block; } /* To remove the scrollbars */
-      /* to show the canvas bounds */
-      canvas { background: #eee; }
-      font-family: mono;
-      a.button { text-decoration: none; padding:5px; background-color:#AACCCC; font-weight: bold; }
-      a.button:active { background-color:#336666; color:#FFFFFF; }
-      .highlight { color:red; }
-    </style>
-    <link rel="icon" href="/webgl/favicon.png"/>
-    <meta charset="utf-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <style>
-        #window1 {
-            margin: 2em auto 0 auto;
-        }
-        .sidebar {
-          background-color: rgba(0,180,0,0.5);
-          font-family: sans-serif;
-        }
-        .sidebar>*  {
-          display: inline-block;
-          padding-bottom: 0.2em;
-          padding-left: 1em;
-        }
-        a {
-          text-decoration: none;
-          color: white;
-        }
-        a:visited {
-          color: white;
-        }
-    </style>
-  </head>
-
-<body style="padding: 0; margin: 0; background-color: white;">
+  <meta name="description" content="A webgl wrapper for the nim programming language">
+  <meta name="author" content="stisa">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/github.css">
+  <link rel="apple-touch-icon-precomposed" href="/favicon-152.png">
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  <meta name="msapplication-TileImage" content="/favicon-144.png">
+  <title>Example 3</title>
+</head>
+<body>
   <header class="sidebar">
-    <h3><a href="/">Home</a></h3>
-    <a href="/articles/">Blog</a>
-    <a href="http://stisa.space/about/">About me</a>
-    <h1>Example 3</h1>
-    <a href="https://bitbucket.org/runhello/nim-webgl-test">Code ported from here</a>  
+
+    <h3>Menu</h3>
+
+    <div class="menu">
+
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/about/">About Me</a>
+      <br/>
+      <a href="/webgl/">Webgl</a>
+      <a href="https://bitbucket.org/runhello/nim-webgl-test">Code ported from here</a>
+    </div>
+   
   </header>
-  <canvas id="canvas" width="640" height="480">
-    Your browser doesn't appear to support the 
-    <code>&lt;canvas&gt;</code> element.
-  </canvas>
-  <script src="/webgl/ex3.js"></script>
-  
+  <section class="content">
+    <h2>Example 3</h2>
+    <canvas id="canvas" width="640" height="480">
+      Your browser doesn't appear to support the 
+      <code>&lt;canvas&gt;</code> element.
+    </canvas>
+    <script src="/webgl/ex3.js"></script>
+  </section>
 </body>
 
 </html>

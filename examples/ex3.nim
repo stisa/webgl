@@ -122,7 +122,5 @@ proc animLoop() =
 
 # Init
 if gl != nil:
-  canv.width = dom.window.innerWidth
-  canv.height = dom.window.innerHeight
   draw(gl)
   animLoop()

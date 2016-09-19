@@ -622,8 +622,6 @@ F.line = 121;
 window.requestAnimationFrame(animloop_33193);framePtr = F.prev;
 }
 if (!((gl_33063[0] == null))) {
-canv_33062[0].width = window.innerWidth;
-canv_33062[0].height = window.innerHeight;
 draw_33118(gl_33063[0]);
 animloop_33193();
 }

@@ -385,7 +385,7 @@ function getcontextwebgl_28101(c_28103) {
 var result_28104 = null;
 var F={procname:"webgl.getContextWebGL",prev:framePtr,filename:"c:\\users\\silvio\\.nimble\\pkgs\\webgl-0.1.0\\webgl.nim",line:0};
 framePtr = F;
-F.line = 309;
+F.line = 310;
 result_28104 = c_28103.getContext('webgl') || c_28103.getContext('experimental-webgl');framePtr = F.prev;
 return result_28104;
 }
@@ -470,7 +470,7 @@ function tofloat32array_28086(a_28089) {
 var result_28090 = null;
 var F={procname:"webgl.toFloat32Array",prev:framePtr,filename:"c:\\users\\silvio\\.nimble\\pkgs\\webgl-0.1.0\\webgl.nim",line:0};
 framePtr = F;
-F.line = 301;
+F.line = 302;
 result_28090 = new Float32Array(a_28089);framePtr = F.prev;
 return result_28090;
 }
@@ -498,21 +498,21 @@ function perspective4_29140(a_29148, b_29150, c_29152, d_29154, e_29156) {
 
 var F={procname:"perspective4.perspective4",prev:framePtr,filename:"c:\\users\\silvio\\.nimble\\pkgs\\webgl-0.1.0\\webgl.nim",line:0};
 framePtr = F;
-F.line = 324;
+F.line = 331;
 function frustum(a,b,c,d,e,g,f){var h=b-a,i=d-c,j=g-e;f[0]=e*2/h;f[1]=0;f[2]=0;f[3]=0;f[4]=0;f[5]=e*2/i;f[6]=0;f[7]=0;f[8]=(b+a)/h;f[9]=(d+c)/i;f[10]=-(g+e)/j;f[11]=-1;f[12]=0;f[13]=0;f[14]=-(g*e*2)/j;f[15]=0;return f;};a_29148=c_29152*Math.tan(a_29148*Math.PI/360);b_29150=a_29148*b_29150;result_29157 = frustum(-b_29150,b_29150,-a_29148,a_29148,c_29152,d_29154,e_29156);framePtr = F.prev;
 }
 function identity4_29189(a_29193) {
 
 var F={procname:"identity4.identity4",prev:framePtr,filename:"c:\\users\\silvio\\.nimble\\pkgs\\webgl-0.1.0\\webgl.nim",line:0};
 framePtr = F;
-F.line = 316;
+F.line = 323;
 a_29193[0]=1;a_29193[1]=0;a_29193[2]=0;a_29193[3]=0;a_29193[4]=0;a_29193[5]=1;a_29193[6]=0;a_29193[7]=0;a_29193[8]=0;a_29193[9]=0;a_29193[10]=1;a_29193[11]=0;a_29193[12]=0;a_29193[13]=0;a_29193[14]=0;a_29193[15]=1;result_29194=a_29193framePtr = F.prev;
 }
 function traslate4_29201(a_29207, b_29209, c_29211) {
 
 var F={procname:"traslate4.traslate4",prev:framePtr,filename:"c:\\users\\silvio\\.nimble\\pkgs\\webgl-0.1.0\\webgl.nim",line:0};
 framePtr = F;
-F.line = 320;
+F.line = 327;
 var d=b_29209[0],e=b_29209[1];b_29209=b_29209[2];if(!c_29211||a_29207==c_29211){a_29207[12]=a_29207[0]*d+a_29207[4]*e+a_29207[8]*b_29209+a_29207[12];a_29207[13]=a_29207[1]*d+a_29207[5]*e+a_29207[9]*b_29209+a_29207[13];a_29207[14]=a_29207[2]*d+a_29207[6]*e+a_29207[10]*b_29209+a_29207[14];a_29207[15]=a_29207[3]*d+a_29207[7]*e+a_29207[11]*b_29209+a_29207[15];return a_29207}var g=a_29207[0],f=a_29207[1],h=a_29207[2],i=a_29207[3],j=a_29207[4],k=a_29207[5],l=a_29207[6],o=a_29207[7],m=a_29207[8],n=a_29207[9],p=a_29207[10],r=a_29207[11];c_29211[0]=g;c_29211[1]=f;c_29211[2]=h;c_29211[3]=i;c_29211[4]=j;c_29211[5]=k;c_29211[6]=l;c_29211[7]=o;c_29211[8]=m;c_29211[9]=n;c_29211[10]=p;c_29211[11]=r;c_29211[12]=g*d+j*e+m*b_29209+a_29207[12];c_29211[13]=f*d+k*e+n*b_29209+a_29207[13];c_29211[14]=h*d+l*e+p*b_29209+a_29207[14];c_29211[15]=i*d+o*e+r*b_29209+a_29207[15];result_29212 = c_29211;framePtr = F.prev;
 }
 function setmatrixuniforms_29078(gl_29080, pm_29081, mv_29082) {

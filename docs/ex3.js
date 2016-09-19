@@ -443,7 +443,7 @@ function getcontextwebgl_28101(c_28103) {
 var result_28104 = null;
 var F={procname:"webgl.getContextWebGL",prev:framePtr,filename:"c:\\users\\silvio\\documents\\dev\\nim\\webgl\\webgl.nim",line:0};
 framePtr = F;
-F.line = 309;
+F.line = 310;
 result_28104 = c_28103.getContext('webgl') || c_28103.getContext('experimental-webgl');framePtr = F.prev;
 return result_28104;
 }
@@ -484,20 +484,20 @@ var vertices_33111 = /**/[gl_33063[0].createBuffer()];
 var vertexshader_33112 = /**/[gl_33063[0].createShader(35633)];
 gl_33063[0].shaderSource(vertexshader_33112[0], toJSStr(vertexshadercode_33060));
 gl_33063[0].compileShader(vertexshader_33112[0]);
-function getstatus_28148(gl_28150, what_28151) {
+function getstatus_28111(gl_28113, what_28114) {
 
-var result_28152 = false;
+var result_28115 = false;
 var F={procname:"webgl.getStatus",prev:framePtr,filename:"c:\\users\\silvio\\documents\\dev\\nim\\webgl\\webgl.nim",line:0};
 framePtr = F;
-F.line = 327;
-result_28152 = gl_28150.getShaderParameter(what_28151, gl_28150.COMPILE_STATUS);framePtr = F.prev;
-return result_28152;
+F.line = 315;
+result_28115 = gl_28113.getShaderParameter(what_28114, gl_28113.COMPILE_STATUS);framePtr = F.prev;
+return result_28115;
 }
 function checkshader_33006(gl_33008, shader_33009) {
 
 var F={procname:"ex3.checkShader",prev:framePtr,filename:"ex3.nim",line:0};
 framePtr = F;
-if (!(getstatus_28148(gl_33008, shader_33009))) {
+if (!(getstatus_28111(gl_33008, shader_33009))) {
 console.log(gl_33008.getShaderInfoLog(shader_33009));
 }
 
@@ -512,20 +512,20 @@ var program_33114 = /**/[gl_33063[0].createProgram()];
 gl_33063[0].attachShader(program_33114[0], vertexshader_33112[0]);
 gl_33063[0].attachShader(program_33114[0], fragmentshader_33113[0]);
 gl_33063[0].linkProgram(program_33114[0]);
-function getstatus_28153(gl_28155, what_28156) {
+function getstatus_28116(gl_28118, what_28119) {
 
-var result_28157 = false;
+var result_28120 = false;
 var F={procname:"webgl.getStatus",prev:framePtr,filename:"c:\\users\\silvio\\documents\\dev\\nim\\webgl\\webgl.nim",line:0};
 framePtr = F;
-F.line = 329;
-result_28157 = gl_28155.getProgramParameter(what_28156, gl_28155.LINK_STATUS);framePtr = F.prev;
-return result_28157;
+F.line = 317;
+result_28120 = gl_28118.getProgramParameter(what_28119, gl_28118.LINK_STATUS);framePtr = F.prev;
+return result_28120;
 }
 function checkprogram_33013(gl_33015, prog_33016) {
 
 var F={procname:"ex3.checkProgram",prev:framePtr,filename:"ex3.nim",line:0};
 framePtr = F;
-if (!(getstatus_28153(gl_33015, prog_33016))) {
+if (!(getstatus_28116(gl_33015, prog_33016))) {
 console.log(gl_33015.getProgramInfoLog(prog_33016));
 }
 
@@ -546,7 +546,7 @@ function tofloat32array_28086(a_28089) {
 var result_28090 = null;
 var F={procname:"webgl.toFloat32Array",prev:framePtr,filename:"c:\\users\\silvio\\documents\\dev\\nim\\webgl\\webgl.nim",line:0};
 framePtr = F;
-F.line = 301;
+F.line = 302;
 result_28090 = new Float32Array(a_28089);framePtr = F.prev;
 return result_28090;
 }

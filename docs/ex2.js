@@ -391,7 +391,7 @@ function tofloat32array_28085(a_28088) {
 var result_28089 = null;
 var F={procname:"webgl.toFloat32Array",prev:framePtr,filename:"c:\\users\\silvio\\.nimble\\pkgs\\webgl-0.1.0\\webgl.nim",line:0};
 framePtr = F;
-F.line = 301;
+F.line = 302;
 result_28089 = new Float32Array(a_28088);framePtr = F.prev;
 return result_28089;
 }
@@ -414,7 +414,7 @@ function getcontextwebgl_28100(c_28102) {
 var result_28103 = null;
 var F={procname:"webgl.getContextWebGL",prev:framePtr,filename:"c:\\users\\silvio\\.nimble\\pkgs\\webgl-0.1.0\\webgl.nim",line:0};
 framePtr = F;
-F.line = 309;
+F.line = 310;
 result_28103 = c_28102.getContext('webgl') || c_28102.getContext('experimental-webgl');framePtr = F.prev;
 return result_28103;
 }
@@ -559,7 +559,7 @@ function traslate4_29262(a_29268, b_29270, c_29272) {
 
 var F={procname:"traslate4.traslate4",prev:framePtr,filename:"c:\\users\\silvio\\.nimble\\pkgs\\webgl-0.1.0\\webgl.nim",line:0};
 framePtr = F;
-F.line = 320;
+F.line = 327;
 var d=b_29270[0],e=b_29270[1];b_29270=b_29270[2];if(!c_29272||a_29268==c_29272){a_29268[12]=a_29268[0]*d+a_29268[4]*e+a_29268[8]*b_29270+a_29268[12];a_29268[13]=a_29268[1]*d+a_29268[5]*e+a_29268[9]*b_29270+a_29268[13];a_29268[14]=a_29268[2]*d+a_29268[6]*e+a_29268[10]*b_29270+a_29268[14];a_29268[15]=a_29268[3]*d+a_29268[7]*e+a_29268[11]*b_29270+a_29268[15];return a_29268}var g=a_29268[0],f=a_29268[1],h=a_29268[2],i=a_29268[3],j=a_29268[4],k=a_29268[5],l=a_29268[6],o=a_29268[7],m=a_29268[8],n=a_29268[9],p=a_29268[10],r=a_29268[11];c_29272[0]=g;c_29272[1]=f;c_29272[2]=h;c_29272[3]=i;c_29272[4]=j;c_29272[5]=k;c_29272[6]=l;c_29272[7]=o;c_29272[8]=m;c_29272[9]=n;c_29272[10]=p;c_29272[11]=r;c_29272[12]=g*d+j*e+m*b_29270+a_29268[12];c_29272[13]=f*d+k*e+n*b_29270+a_29268[13];c_29272[14]=h*d+l*e+p*b_29270+a_29268[14];c_29272[15]=i*d+o*e+r*b_29270+a_29268[15];result_29273 = c_29272;framePtr = F.prev;
 }
 function setmatrixuniforms_29153() {

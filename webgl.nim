@@ -244,7 +244,7 @@ proc getParameter* (pname:GLenum):auto {.importc.} #Returns a value for the pass
 
 proc activeTexture* (gl:WebGLRenderingContext, texture:auto) {.importc.} #Selects the active texture unit.
 
-# FIXME: this does not handle 
+# FIXME: getParameter does not handle 
 # gl.DELETE_STATUS: Returns a GLboolean indicating whether or not the program is flagged for deletion.
 # gl.LINK_STATUS: Returns a GLboolean indicating whether or not the last link operation was successful.
 # gl.VALIDATE_STATUS: Returns a GLboolean indicating whether or not the last validation operation was successful
@@ -306,7 +306,13 @@ converter toUint32Array*(a: seq[uint]): Uint32Array = {.emit: "`result` = new Ui
 converter toInt32Array*(a: seq[int]): Int32Array = {.emit: "`result` = new Int32Array(`a`);".}
 
 
-proc getContextWebGL*(c: Canvas): WebGLRenderingContext = 
+proc getContextWebGL*(c: Canvas): WebGLRenderingContext =
+  ## Get a webgl context on the given canvas.
+  ## Example:
+  ## .. code-block:: nim
+  ## var canvas = dom.document.getElementById("canvas").Canvas
+  ## var gl = getContextWebGL(canvas)
+
   {.emit: "`result` = `c`.getContext('webgl') || `c`.getContext('experimental-webgl');".}
 
 proc requestAnimationFrame*(fn:proc(time:float))= {.emit:"window.requestAnimationFrame(`fn`);".} 

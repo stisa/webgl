@@ -8,6 +8,8 @@ type
   CanvasObj {.importc.} = object of dom.Element
     width*: int
     height*:int
+    clientWidth*: int
+    clientHeight*:int
 
   ArrayBufferView* = ref ArrayBufferViewObj
   ArrayBufferViewObj {. importc .} = object of RootObj
@@ -322,6 +324,13 @@ proc getStatus*(gl:WebGLRenderingContext,what:WebglShader): GLboolean =
 proc getStatus*(gl:WebGLRenderingContext,what:WebglProgram): GLboolean =
   {. emit:"`result` = `gl`.getProgramParameter(`what`, `gl`.LINK_STATUS);" .}
 
+proc resize*(canvas:Canvas) =
+  if (
+      canvas.width  != canvas.clientwidth or
+      canvas.height != canvas.clientheight
+  ):
+    canvas.width  = canvas.clientwidth 
+    canvas.height = canvas.clientheight
 
 #[Deprecable?]#
 # a: matrix in which to store identity

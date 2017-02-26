@@ -233,7 +233,7 @@ type
     finish* : proc() #Blocks execution until all previously called commands are finished.
     flush* : proc() #Empties different 
 
-proc getBoundingClientRect(c:Canvas):tuple[t,b,l,r:int] =
+proc getBoundingClientRect*(c:Canvas):tuple[t,b,l,r:int] =
   {.emit:"""
   var rect = `c`.getBoundingClientRect();
   `result.t`= rect.top;

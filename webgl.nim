@@ -233,7 +233,14 @@ type
     finish* : proc() #Blocks execution until all previously called commands are finished.
     flush* : proc() #Empties different 
 
-      
+proc getBoundingClientRect(c:Canvas):tuple[t,b,l,r:int] =
+  {.emit:"""
+  var rect = `c`.getBoundingClientRect();
+  `result.t`= rect.top;
+  `result.b`= rect.bottom;
+  `result.l`= rect.left;
+  `result.r`= rect.right;
+  """}
 proc bufferData*(gl:WebGLRenderingContext, target:GLenum, size:GLsizeiptr, usage:GLenum) = #Updates buffer data.
   {. emit: "`gl`.bufferData(`target`,`size`,`usage`);" .} 
 proc bufferData*(gl:WebGLRenderingContext, target:GLenum, data:Float32Array, usage:GLenum) = #Updates buffer data.

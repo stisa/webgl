@@ -8,6 +8,8 @@ type
   CanvasObj {.importc.} = object of dom.Element
     width*: int
     height*:int
+    clientWidth*: int
+    clientHeight*:int
 
   ArrayBufferView* = ref ArrayBufferViewObj
   ArrayBufferViewObj {. importc .} = object of RootObj
@@ -231,10 +233,21 @@ type
     finish* : proc() #Blocks execution until all previously called commands are finished.
     flush* : proc() #Empties different 
 
-      
+proc getBoundingClientRect*(c:Canvas):tuple[top,bottom,left,right:float] =
+  var
+    t,b,lf,r:float
+  {.emit:"""
+  var _rect = `c`.getBoundingClientRect();
+  `t`= _rect.top;
+  `b`= _rect.bottom;
+  `l`= _rect.left;
+  `r`= _rect.right;
+  """}
+  result = (t,b,lf,r)
+
 proc bufferData*(gl:WebGLRenderingContext, target:GLenum, size:GLsizeiptr, usage:GLenum) = #Updates buffer data.
   {. emit: "`gl`.bufferData(`target`,`size`,`usage`);" .} 
-proc bufferData*(gl:WebGLRenderingContext, target:GLenum, data:auto, usage:GLenum) = #Updates buffer data.
+proc bufferData*(gl:WebGLRenderingContext, target:GLenum, data:Float32Array, usage:GLenum) = #Updates buffer data.
   {. emit: "`gl`.bufferData(`target`,`data`,`usage`);" .}
 
 proc bufferSubData*(gl:WebGLRenderingContext,target:GLenum, offset:GLintptr, data:auto) =#Updates buffer data starting at a passed offset.
@@ -244,10 +257,12 @@ proc getParameter* (pname:GLenum):auto {.importc.} #Returns a value for the pass
 
 proc activeTexture* (gl:WebGLRenderingContext, texture:auto) {.importc.} #Selects the active texture unit.
 
-# FIXME: this does not handle 
-#gl.DELETE_STATUS: Returns a GLboolean indicating whether or not the program is flagged for deletion.
-#gl.LINK_STATUS: Returns a GLboolean indicating whether or not the last link operation was successful.
-#gl.VALIDATE_STATUS: Returns a GLboolean indicating whether or not the last validation operation was successful
+# FIXME: getParameter does not handle 
+# gl.DELETE_STATUS: Returns a GLboolean indicating whether or not the program is flagged for deletion.
+# gl.LINK_STATUS: Returns a GLboolean indicating whether or not the last link operation was successful.
+# gl.VALIDATE_STATUS: Returns a GLboolean indicating whether or not the last validation operation was successful
+# Use getStatus(Shader|Program) instead
+
 proc getProgramParameter* (gl:WebGLRenderingContext,program:WebGLProgram, pname:GLenum):GLint{.importc.} #Returns information about the program.
 
 proc getBufferParameter* (gl:WebGLRenderingContext,target, pname:GLenum): auto {.importc.} #Returns information about the buffer.
@@ -262,8 +277,8 @@ proc getShaderParameter* (gl:WebGLRenderingContext,shader:WebGLShader, pname:Gle
 
 proc getUniform* (gl:WebGLRenderingContext,program:WebGLProgram, location:WebGLUniformLocation):auto {.importc.} #Returns the value of a uniform variable at a given location.
 
-proc getVertexAttrib*(gl:WebGLRenderingContext,index:GLuint, pname:GLenum):auto {.importc.} #Returns information about a vertex attribute at a given position.
-
+proc getVertexAttrib*(gl:WebGLRenderingContext,index:GLuint, pname:GLenum):WebGLBuffer = #Returns information about a vertex attribute at a given position.
+  {. emit: "`result`=`gl`.getVertexAttrib(`index`,`pname`);" .}
 #proc texImage2D*(gl:WebGLRenderingContext, target: GLenum, level: GLint, internalformat: GLint, format: GLenum, typ: GLenum, pixels:ImageData)= #TODO
 #{.emit: "gl.texImage2D(target, level, internalformat, format, type, pixels);".}
 
@@ -289,15 +304,46 @@ proc texSubImage2D* (target:GLenum, level, xoffset, yoffset:GLint, format, typ:G
 #Helpers
 proc f32A* (s:openarray[float]):Float32Array = #helper
   {.emit: "`result` = new Float32Array(`s`);".}
-proc iA* (s:openarray[int]):Int32Array = #helper
+proc ui16A* (s:openarray[int]):UInt16Array = #helper
   {.emit: "`result` = new UInt16Array(`s`);".}
 
-proc getContextWebGL*(c: Canvas): WebGLRenderingContext = 
+
+proc log*(str:varargs[auto]) = {.emit: "console.log(`str`);".}
+
+converter toFloat32Array*(a: seq[float32]): Float32Array = {.emit: "`result` = new Float32Array(`a`);".}
+
+converter toFloat32Array*(a: seq[float]): Float32Array = {.emit: "`result` = new Float32Array(`a`);".}
+
+converter toUint32Array*(a: seq[uint]): Uint32Array = {.emit: "`result` = new Uint32Array(`a`);".}
+
+converter toInt32Array*(a: seq[int]): Int32Array = {.emit: "`result` = new Int32Array(`a`);".}
+
+
+proc getContextWebGL*(c: Canvas): WebGLRenderingContext =
+  ## Get a webgl context on the given canvas.
+  ## Example:
+  ## .. code-block:: nim
+  ## var canvas = dom.document.getElementById("canvas").Canvas
+  ## var gl = getContextWebGL(canvas)
+
   {.emit: "`result` = `c`.getContext('webgl') || `c`.getContext('experimental-webgl');".}
 
-proc getWebGLContext*(c: Canvas): WebGLRenderingContext = 
-  {.emit: "`result` = `c`.getContext('webgl') || `c`.getContext('experimental-webgl');".}
-    
+proc requestAnimationFrame*(fn:proc(time:float))= {.emit:"window.requestAnimationFrame(`fn`);".} 
+
+proc getStatus*(gl:WebGLRenderingContext,what:WebglShader): GLboolean =
+  {. emit:"`result` = `gl`.getShaderParameter(`what`, `gl`.COMPILE_STATUS);" .}
+proc getStatus*(gl:WebGLRenderingContext,what:WebglProgram): GLboolean =
+  {. emit:"`result` = `gl`.getProgramParameter(`what`, `gl`.LINK_STATUS);" .}
+
+proc resize*(canvas:Canvas) =
+  if (
+      canvas.width  != canvas.clientwidth or
+      canvas.height != canvas.clientheight
+  ):
+    canvas.width  = canvas.clientwidth 
+    canvas.height = canvas.clientheight
+
+#[Deprecable?]#
 # a: matrix in which to store identity
 proc identity4* (a:auto):auto =
   {. emit: "`a`[0]=1;`a`[1]=0;`a`[2]=0;`a`[3]=0;`a`[4]=0;`a`[5]=1;`a`[6]=0;`a`[7]=0;`a`[8]=0;`a`[9]=0;`a`[10]=1;`a`[11]=0;`a`[12]=0;`a`[13]=0;`a`[14]=0;`a`[15]=1;`result`=`a`" .}
@@ -310,7 +356,3 @@ proc traslate4* (a,b,c:auto):auto =
 proc perspective4* (a,b,c,d,e:auto):auto =
   {. emit : "function frustum(a,b,c,d,e,g,f){var h=b-a,i=d-c,j=g-e;f[0]=e*2/h;f[1]=0;f[2]=0;f[3]=0;f[4]=0;f[5]=e*2/i;f[6]=0;f[7]=0;f[8]=(b+a)/h;f[9]=(d+c)/i;f[10]=-(g+e)/j;f[11]=-1;f[12]=0;f[13]=0;f[14]=-(g*e*2)/j;f[15]=0;return f;};`a`=`c`*Math.tan(`a`*Math.PI/360);`b`=`a`*`b`;`result` = frustum(-`b`,`b`,-`a`,`a`,`c`,`d`,`e`);" .}
 
-proc getStatus*(gl:WebGLRenderingContext,what:WebglShader): GLboolean =
-  {. emit:"`result` = `gl`.getShaderParameter(`what`, `gl`.COMPILE_STATUS);" .}
-proc getStatus*(gl:WebGLRenderingContext,what:WebglProgram): GLboolean =
-  {. emit:"`result` = `gl`.getProgramParameter(`what`, `gl`.COMPILE_STATUS);" .}

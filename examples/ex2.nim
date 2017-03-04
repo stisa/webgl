@@ -1,4 +1,4 @@
-import webgl, dom
+import ../src/webgl, dom
 
 var gl: WebGLRenderingContext;
 var viewportWidth:int
@@ -17,7 +17,7 @@ proc perspective4 (a,b,c,d,e:auto):auto =
 
 proc initGL(canvas:Canvas) = 
     
-    gl = canvas.getContextWebGL
+    gl = canvas.getContext("webgl")
     viewportWidth = canvas.width;
     viewportHeight = canvas.height;
     
@@ -72,8 +72,8 @@ proc initShaders() =
 
 
 
-var mvMatrix :Float32Array = newSeq[float](16) # 4x4, so 16 elements
-var pMatrix :Float32Array= newSeq[float](16)
+var mvMatrix = newSeq[float](16) # 4x4, so 16 elements
+var pMatrix = newSeq[float](16)
 
 proc setMatrixUniforms() =
     gl.uniformMatrix4fv(pMatrixUniform, false, pMatrix);
@@ -92,7 +92,7 @@ proc initBuffers() =
         -1.0, -1.0,  0.0,
             1.0, -1.0,  0.0
     ];
-    gl.bufferData(ARRAY_BUFFER, vertices.f32A, STATIC_DRAW);
+    gl.bufferData(ARRAY_BUFFER, vertices, STATIC_DRAW);
     tin.itemSize = 3;
     tin.numItems = 3;
 
@@ -104,7 +104,7 @@ proc initBuffers() =
             1.0, -1.0,  0.0,
         -1.0, -1.0,  0.0
     ];
-    gl.bufferData(ARRAY_BUFFER, vertices2.f32A, STATIC_DRAW);
+    gl.bufferData(ARRAY_BUFFER, vertices2, STATIC_DRAW);
     vin.itemSize = 3;
     vin.numItems = 4;
 

@@ -22,8 +22,8 @@ type
     GLubyte* = byte # octet #8-bit twos complement unsigned integer. 
     GLbyte* = byte # byte #8-bit twos complement signed integer. 
     
-    GLfloat* = float # unrestricted float #32-bit IEEE floating point number. 
-    GLclampf* = float # unrestricted TODO float #Clamped 32-bit IEEE floating point number. 
+    GLfloat* = float32 # unrestricted float #32-bit IEEE floating point number. 
+    GLclampf* = float32 # unrestricted TODO float #Clamped 32-bit IEEE floating point number. 
 
 
 # WEBGL constants

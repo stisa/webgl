@@ -1,4 +1,4 @@
-import dom, webgl
+import dom, ../src/webgl
 
 var vertexPositionAttribute : GLuint 
 
@@ -52,8 +52,8 @@ proc initBuffers(gl:WebGLRenderingContext) =
 
     gl.bindBuffer(ARRAY_BUFFER, squareVerticesBuffer)
 
-    var vertices = @[
-        1.0,  1.0,  0.0,
+    var vertices :seq[float32]= @[
+        1.0'f32,  1.0,  0.0,
         -1.0, 1.0,  0.0,
         1.0,  -1.0, 0.0,
         -1.0, -1.0, 0.0
@@ -62,7 +62,7 @@ proc initBuffers(gl:WebGLRenderingContext) =
     gl.bufferData(ARRAY_BUFFER, vertices, STATIC_DRAW);
 
 
-proc setMatrixUniforms(gl:WebGLRenderingContext,pm, mv: Float32Array) =
+proc setMatrixUniforms(gl:WebGLRenderingContext,pm, mv: seq[GLfloat]) =
     var pUniform = gl.getUniformLocation(shaderProgram,"uPMatrix")
     gl.uniformMatrix4fv(pUniform,false, pm)
 
@@ -72,11 +72,11 @@ proc setMatrixUniforms(gl:WebGLRenderingContext,pm, mv: Float32Array) =
 proc drawScene(gl:WebGLRenderingContext) =
     gl.clear(COLOR_BUFFER_BIT or DEPTH_BUFFER_BIT);
     
-    var perspectiveMatrix = newSeq[float](16)
+    var perspectiveMatrix = newSeq[GLfloat](16)
     perspective4(45, 640.0/480.0, 0.1, 100.0, perspectiveMatrix);
     
 
-    var mv = newSeq[float](16)
+    var mv = newSeq[GLfloat](16)
     mv.identity4();
     mv.traslate4([-0.0, 0.0, -6.0],mv);
     
@@ -87,14 +87,16 @@ proc drawScene(gl:WebGLRenderingContext) =
 
 
 dom.window.onload = proc (e: dom.Event) =
-    
+    echo sizeof(int)
+    echo sizeof(uint)
+    echo sizeof(GLfloat)
     var canvas = dom.document.getElementById("glcanvas").Canvas;
-    var gl = getContextWebGL(canvas)
+    var gl = canvas.getContext("webgl")
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0);  # Clear to black, fully opaque 
     gl.clearDepth(1.0);                 # Clear everything 
     gl.enable(DEPTH_TEST);           # Enable depth testing 
-    gl.depthFunc(LEQUAL);            # Near things obscure far things 
+ #   gl.depthFunc(LEQUAL);            # Near things obscure far things 
 
 
     # Initialize the shaders; this is where all the lighting for the 

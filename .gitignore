@@ -1,3 +1,5 @@
 .vscode/
 nimcache/
 examples/nimcache
+examples/*.js
+examples/*.html

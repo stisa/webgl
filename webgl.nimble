@@ -4,6 +4,7 @@ author        = "stisa"
 description   = "Basic wrapper for WebGL."
 license       = "MIT"
 
+srcDir = "src"
 # Deps
 requires: "nim >= 0.14.0"
 

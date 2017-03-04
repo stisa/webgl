@@ -158,7 +158,7 @@ proc stencilOpSeparate* (gl:WebglRenderingContext, face, fail, zfail, zpass:uint
   ## Sets the front and/or back-facing stencil test actions.
 
 # Buffers
-proc bindBuffer* (gl:WebglRenderingContext,target:uint,buffer:WebGLBuffer) 
+proc bindBuffer* (gl:WebglRenderingContext,target:uint|BufferEnum,buffer:WebGLBuffer) 
   ## Binds a WebGLBuffer object to a given target.
 proc createBuffer* (gl:WebglRenderingContext):WebGLBuffer  
   ## Creates a WebGLBuffer object.
@@ -230,7 +230,7 @@ proc compileShader* (gl:WebglRenderingContext,shader:WebGLShader)
   ## Compiles a WebGLShader.
 proc createProgram* (gl:WebglRenderingContext):WebGLProgram 
   ## Creates a WebGLProgram.
-proc createShader* (gl:WebglRenderingContext,typ:uint):WebGLShader 
+proc createShader* (gl:WebglRenderingContext,typ:uint|ShaderEnum):WebGLShader 
   ## Creates a WebGLShader.
 proc deleteProgram* (gl:WebglRenderingContext,program:WebGLProgram) 
   ## Deletes a WebGLProgram.
@@ -318,32 +318,32 @@ proc vertexAttrib2fv*(gl:WebglRenderingContext,index:uint, value:Float32Array)
 proc vertexAttrib3fv*(gl:WebglRenderingContext,index:uint, value:Float32Array)
 proc vertexAttrib4fv*(gl:WebglRenderingContext,index:uint, value:Float32Array)
 
-proc vertexAttribPointer* (gl:WebglRenderingContext,index:uint, size:int, typ:uint, 
+proc vertexAttribPointer* (gl:WebglRenderingContext,index:uint, size:int, typ:uint|DataType, 
                            normalized:bool, stride:int, offset:int64) 
   ## Specifies the data formats and locations of vertex attributes in a vertex attributes array. 
 
 #Drawing buffers
-proc clear* (gl:WebglRenderingContext,mask:uint) 
+proc clear* (gl:WebglRenderingContext,mask:uint|BufferBit) 
   ## Clears specified buffers to preset values.
-proc drawArrays* (gl:WebglRenderingContext,mode:uint, first:int, count:int) 
+proc drawArrays* (gl:WebglRenderingContext,mode:uint|PrimitiveMode, first:int, count:int) 
   ## Renders primitives from array data.
-proc drawElements* (gl:WebglRenderingContext,mode:uint, count:int, typ: uint, offset:int64) 
+proc drawElements* (gl:WebglRenderingContext,mode:uint|PrimitiveMode, count:int, typ: uint|DataType, offset:int64) 
   ## Renders primitives from element array data.
 proc finish* (gl:WebglRenderingContext) 
   ## Blocks execution until all previously called commands are finished.
 proc flush* (gl:WebglRenderingContext) 
   ## Empties different 
 
-proc bufferData*(gl:WebGLRenderingContext, target:uint, size:int64, usage:uint)  
+proc bufferData*(gl:WebGLRenderingContext, target:uint|BufferEnum, size:int64, usage:uint|BufferEnum)  
   ## Updates buffer data.
 
-proc bufferData*(gl:WebGLRenderingContext, target:uint, data:Int32Array, usage:uint) 
+proc bufferData*(gl:WebGLRenderingContext, target:uint|BufferEnum, data:Int32Array, usage:uint|BufferEnum) 
   ## Updates buffer data.
 
-proc bufferData*(gl:WebGLRenderingContext, target:uint, data:Uint16Array, usage:uint) 
+proc bufferData*(gl:WebGLRenderingContext, target:uint|BufferEnum, data:Uint16Array, usage:uint|BufferEnum) 
   ## Updates buffer data.
 
-proc bufferData*(gl:WebGLRenderingContext, target:uint, data:Float32Array, usage:uint) 
+proc bufferData*(gl:WebGLRenderingContext, target:uint|BufferEnum, data:Float32Array, usage:uint|BufferEnum) 
   ## Updates buffer data.
 
 proc bufferSubData*(gl:WebGLRenderingContext,target:uint, offset:int64, data:auto) 
@@ -408,7 +408,9 @@ proc texSubImage2D* (target:uint, level, xoffset, yoffset:int, format, typ:uint,
 proc texSubImage2D* (target:uint, level, xoffset, yoffset:int, format, typ:uint, pixels:EmbedElement) 
 
 proc getContext*(c: Canvas,kind:cstring): WebGLRenderingContext
-  ## Get a webgl context on the given canvas.
+  ## Get the specified context on the given canvas.
+  ## Does NOT account for eg. ``experimental-webgl`` vs ``webgl`` etc.
+  ## See ``getContextWebgl``for that
   ## Example:
   ## .. code-block:: nim
   ## var canvas = dom.document.getElementById("canvas").Canvas
@@ -416,6 +418,19 @@ proc getContext*(c: Canvas,kind:cstring): WebGLRenderingContext
   ##
 
 {. pop .}
+
+proc getContextWebgl*(c:Canvas) : WebGLRenderingContext = 
+  ## Get a webgl context on the given canvas.
+  ## Tries ``webgl`` first, then ``experimental-webgl``
+  ## Example:
+  ## .. code-block:: nim
+  ## var canvas = dom.document.getElementById("canvas").Canvas
+  ## var gl = canvas.getContextWebgl()
+  ##
+  result = c.getContext("webgl") 
+  if result.isNil: result = c.getContext("experimental-webgl")
+  assert(not result.isNil)
+
 proc getBoundingClientRect*(c:Canvas):tuple[top,bottom,left,right:float] =
   var
     t,b,lf,r:float

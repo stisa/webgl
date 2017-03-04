@@ -1,10 +1,10 @@
-import ../src/webgl,dom
+import ../src/webgl, dom
 
 converter toUI(i:int):uint = i.uint
 
 #============== Creating a canvas ====================*/
 var canvas = dom.document.getElementById("glcanvas").Canvas;
-var gl = canvas.getContext("webgl")
+var gl = canvas.getContextWebgl()
 #======== Defining and storing the geometry ===========*/
 
 var vertices = [
@@ -19,25 +19,25 @@ var indices = [0'u16,1,2];
 var vertex_buffer = gl.createBuffer();
 
 # Bind appropriate array buffer to it
-gl.bindBuffer(0x8892, vertex_buffer);
+gl.bindBuffer(beArrayBuffer, vertex_buffer);
 
 # Pass the vertex data to the buffer
-gl.bufferData(0x8892, vertices, 0x88E4);
+gl.bufferData(beArrayBuffer, vertices, beStaticDraw);
 
 # Unbind the buffer
-gl.bindBuffer(0x8892, nil);
+gl.bindBuffer(beArrayBuffer, nil);
 
 # Create an empty buffer object to store Index buffer
 var Index_Buffer = gl.createBuffer();
 
 # Bind appropriate array buffer to it
-gl.bindBuffer(0x8893, Index_Buffer);
+gl.bindBuffer(beElementArrayBuffer, Index_Buffer);
 
 # Pass the vertex data to the buffer
-gl.bufferData(0x8893, indices, 0x88E4);
+gl.bufferData(beElementArrayBuffer, indices, beStaticDraw);
 
 # Unbind the buffer
-gl.bindBuffer(0x8893, nil);
+gl.bindBuffer(beElementArrayBuffer, nil);
 
 #================ Shaders ====================*/
 
@@ -48,7 +48,7 @@ var vertCode = "attribute vec3 coordinates;"&
   "}"
   
 # Create a vertex shader object
-var vertShader = gl.createShader(0x8B31);
+var vertShader = gl.createShader(seVertexShader);
 
 # Attach vertex shader source code
 gl.shaderSource(vertShader, vertCode);
@@ -62,7 +62,7 @@ var fragCode ="void main(void){" &
   "}"
   
 # Create fragment shader object
-var fragShader = gl.createShader(0x8B30);
+var fragShader = gl.createShader(seFragmentShader);
 
 # Attach fragment shader source code
 gl.shaderSource(fragShader, fragCode); 
@@ -89,16 +89,16 @@ gl.useProgram(shaderProgram);
 #======= Associating shaders to buffer objects =======*/
 
 # Bind vertex buffer object
-gl.bindBuffer(0x8892, vertex_buffer);
+gl.bindBuffer(beArrayBuffer, vertex_buffer);
 
 # Bind index buffer object
-gl.bindBuffer(0x8893, Index_Buffer);
+gl.bindBuffer(beElementArrayBuffer, Index_Buffer);
 
 # Get the attribute location
 var coord = gl.getAttribLocation(shaderProgram, "coordinates");
 
 # Point an attribute to the currently bound VBO
-gl.vertexAttribPointer(coord, 3, 0x1406, false, 0, 0); 
+gl.vertexAttribPointer(coord, 3, dtFloat, false, 0, 0); 
 
 # Enable the attribute
 gl.enableVertexAttribArray(coord);
@@ -112,10 +112,10 @@ gl.clearColor(0.5, 0.5, 0.5, 0.9);
 gl.enable(0x0B71);
 
 # Clear the color buffer bit
-gl.clear(0x00004000);
+gl.clear(bbColor);
 
 # Set the view port
 gl.viewport(0,0,canvas.width,canvas.height);
 
 # Draw the triangle
-gl.drawElements(0x0004, indices.len, 0x1403,0) #0x1403 ??
+gl.drawElements(pmTriangles, indices.len, dtUnsignedShort,0) #0x1403 ??

@@ -6,15 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="description" content="A webgl wrapper for the nim programming language">
+  <meta name="description" content="Examples for webgl">
   <meta name="author" content="stisa">
   <link rel="stylesheet" href="http://stisa.space/css/main.css">
   <link rel="stylesheet" href="http://stisa.space/css/prism.css">
   <link rel="apple-touch-icon-precomposed" href="http://stisa.space/favicon-152.png">
   <meta name="msapplication-TileColor" content="#FFFFFF">
   <meta name="msapplication-TileImage" content="http://stisa.space/favicon-144.png">
-  <style>@media only screen and (min-width: 800px)  { .output { float:left; padding-right:1em;} .content {max-width:82%;} } </style>
-  <title>Example 1</title>
+  <style>@media only screen and (min-width: 800px)  { .output { float:left; padding-right:1em;} } </style>
+  <title>Example: ex1</title>
   <script id="shader-fs" type="x-shader/x-fragment">
   void main(void) {
       gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
@@ -30,8 +30,7 @@
   void main(void) {
       gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
   }
-  </script>
-    
+  </script>  
 </head>
 <body>
   <header class="sidebar">
@@ -44,23 +43,22 @@
       <a href="/projects/">Projects</a>
       <a href="/about/">About Me</a>
       <br/>
-      <a href="/webgl/">Webgl</a>
+      <a href="/webgl/">webgl</a>
     </div>
-   
   </header>
   <section class="content">
     <section class="output" id="output">
-      
-      <h2>Example 1</h2>
-      <canvas id="glcanvas" width="640" height="480">
+      <!--TODO:meaningful output-->
+      <h2>Example: ex1</h2>
+      <canvas style="width:100%; height:100%; min-height:25em;" width="640" height="480" id="glcanvas">
         Your browser doesn't appear to support the 
         <code>&lt;canvas&gt;</code> element.
       </canvas>
-      <script src="./ex1.js"></script>
+      <script type="text/javascript" src="./ex1.js"></script>
     </section>
     <section class="examplecode">
       <h2>Code</h2>
-      <pre><code class="language-nim">import dom, webgl
+      <pre><code class="language-nim">import dom, ../src/webgl
 
 var vertexPositionAttribute : GLuint 
 
@@ -114,8 +112,8 @@ proc initBuffers(gl:WebGLRenderingContext) =
 
     gl.bindBuffer(ARRAY_BUFFER, squareVerticesBuffer)
 
-    var vertices = @[
-        1.0,  1.0,  0.0,
+    var vertices :seq[float32]= @[
+        1.0'f32,  1.0,  0.0,
         -1.0, 1.0,  0.0,
         1.0,  -1.0, 0.0,
         -1.0, -1.0, 0.0
@@ -124,7 +122,7 @@ proc initBuffers(gl:WebGLRenderingContext) =
     gl.bufferData(ARRAY_BUFFER, vertices, STATIC_DRAW);
 
 
-proc setMatrixUniforms(gl:WebGLRenderingContext,pm, mv: Float32Array) =
+proc setMatrixUniforms(gl:WebGLRenderingContext,pm, mv: seq[GLfloat]) =
     var pUniform = gl.getUniformLocation(shaderProgram,"uPMatrix")
     gl.uniformMatrix4fv(pUniform,false, pm)
 
@@ -134,11 +132,11 @@ proc setMatrixUniforms(gl:WebGLRenderingContext,pm, mv: Float32Array) =
 proc drawScene(gl:WebGLRenderingContext) =
     gl.clear(COLOR_BUFFER_BIT or DEPTH_BUFFER_BIT);
     
-    var perspectiveMatrix = newSeq[float](16)
+    var perspectiveMatrix = newSeq[GLfloat](16)
     perspective4(45, 640.0/480.0, 0.1, 100.0, perspectiveMatrix);
     
 
-    var mv = newSeq[float](16)
+    var mv = newSeq[GLfloat](16)
     mv.identity4();
     mv.traslate4([-0.0, 0.0, -6.0],mv);
     
@@ -149,14 +147,16 @@ proc drawScene(gl:WebGLRenderingContext) =
 
 
 dom.window.onload = proc (e: dom.Event) =
-    
+    echo sizeof(int)
+    echo sizeof(uint)
+    echo sizeof(GLfloat)
     var canvas = dom.document.getElementById("glcanvas").Canvas;
-    var gl = getContextWebGL(canvas)
+    var gl = canvas.getContext("webgl")
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0);  # Clear to black, fully opaque 
     gl.clearDepth(1.0);                 # Clear everything 
     gl.enable(DEPTH_TEST);           # Enable depth testing 
-    gl.depthFunc(LEQUAL);            # Near things obscure far things 
+ #   gl.depthFunc(LEQUAL);            # Near things obscure far things 
 
 
     # Initialize the shaders; this is where all the lighting for the 
@@ -171,10 +171,10 @@ dom.window.onload = proc (e: dom.Event) =
     # Set up to draw the scene periodically. 
     #setInterval(drawScene, 15); 
     drawScene(gl)
+
 </code></pre>
     </section>
   </section>
   <script src="http://stisa.space/js/prism.js"></script>
+  
 </body>
-
-</html>

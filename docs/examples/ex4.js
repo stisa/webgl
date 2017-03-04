@@ -12,15 +12,10 @@ if (typeof Uint16Array === 'undefined') Uint16Array = Array;
 if (typeof Uint32Array === 'undefined') Uint32Array = Array;
 if (typeof Float32Array === 'undefined') Float32Array = Array;
 if (typeof Float64Array === 'undefined') Float64Array = Array;
-var NTI128 = {size: 0,kind: 36,base: null,node: null,finalizer: null};
-var NTI33036 = {size: 0,kind: 16,base: null,node: null,finalizer: null};
-var NTI3452 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI33045 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
-var NTI33058 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
-var NTI33031 = {size: 0,kind: 16,base: null,node: null,finalizer: null};
-var NTI124 = {size: 0,kind: 36,base: null,node: null,finalizer: null};
-var NTI33026 = {size: 0,kind: 16,base: null,node: null,finalizer: null};
-var NTI33020 = {size: 0,kind: 16,base: null,node: null,finalizer: null};
+var NTI118 = {size: 0,kind: 42,base: null,node: null,finalizer: null};
+var NTI29014 = {size: 0,kind: 16,base: null,node: null,finalizer: null};
+var NTI126 = {size: 0,kind: 37,base: null,node: null,finalizer: null};
+var NTI29008 = {size: 0,kind: 16,base: null,node: null,finalizer: null};
 var NTI3438 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI104 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
 var NTI12409 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
@@ -52,15 +47,8 @@ NTI12409.node = NNI12409;
 var NNI3438 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
 NTI3438.node = NNI3438;
 NTI3438.base = NTI3436;
-NTI33020.base = NTI104;
-NTI33026.base = NTI124;
-NTI33031.base = NTI124;
-NTI33058.base = NTI124;
-NTI33045.base = NTI124;
-var NNI3452 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
-NTI3452.node = NNI3452;
-NTI3452.base = NTI3424;
-NTI33036.base = NTI128;
+NTI29008.base = NTI126;
+NTI29014.base = NTI118;
 function makeNimstrLit(c_13403) {
 
     var ln = c_13403.length;
@@ -232,43 +220,6 @@ unhandledException(e_12806);
 
 e_12806.trace = nimCopy(null, rawwritestacktrace_12628(), NTI138);
 throw e_12806;}
-var startx_33025 = nimCopy(null, [-7.5000000000000000e-001, 7.5000000000000000e-001, -7.5000000000000000e-001, 7.5000000000000000e-001], NTI33026);
-var starty_33030 = nimCopy(null, [-7.5000000000000000e-001, -7.5000000000000000e-001, 7.5000000000000000e-001, 7.5000000000000000e-001], NTI33031);
-function divInt(a_16803, b_16804) {
-
-      if (b_16804 == 0) raiseDivByZero();
-      if (b_16804 == -1 && a_16803 == 2147483647) raiseOverflow();
-      return Math.floor(a_16803 / b_16804);
-    }
-function addInt(a_16256, b_16257) {
-
-      var result = a_16256 + b_16257;
-      if (result > 2147483647 || result < -2147483648) raiseOverflow();
-      return result;
-    }
-function mulInt(a_16603, b_16604) {
-
-      var result = a_16603 * b_16604;
-      if (result > 2147483647 || result < -2147483648) raiseOverflow();
-      return result;
-    }
-function chckIndx(i_19009, a_19010, b_19011) {
-
-var Tmp1;
-var result_19012 = 0;
-BeforeRet: do {
-if (!(a_19010 <= i_19009)) Tmp1 = false; else {Tmp1 = (i_19009 <= b_19011); }if (Tmp1) {
-result_19012 = i_19009;
-break BeforeRet;
-}
-else {
-raiseIndexError();
-}
-
-} while (false); 
-return result_19012;
-}
-var freqs_33035 = nimCopy(null, [1.0000000000000000e+000, 1.1892071150027210e+000, 1.2599210498948732e+000, 1.4142135623730951e+000], NTI33036);
 var nimvm_5887 = false;
 var nim_program_result = 0;
 var globalraisehook_10414 = [null];
@@ -429,175 +380,68 @@ e_13252 = {m_type: NTI3438, parent: null, name: null, message: null, trace: null
 e_13252.message = nimCopy(null, makeNimstrLit("division by zero"), NTI138);
 raiseException(e_13252, "DivByZeroError");
 }
-var x_33022 = nimCopy(null, [1, 2, 3], NTI33020);
-var y_33023 = /**/[nimCopy(null, x_33022, NTI33020)];
-var z_33024 = /**/[nimCopy(null, x_33022, NTI33020)];
-y_33023[0][0] = 10;
-var modelx_33041 = /**/[nimCopy(null, startx_33025, NTI33026)];
-var modely_33042 = /**/[nimCopy(null, starty_33030, NTI33031)];
-var vertexshadercode_33060 = makeNimstrLit("attribute vec2 position;\x0Avoid main(void) {\x0A    gl_Position = vec4(position, 0.0, 1.0);\x0A}\x0A");
-var fragmentshadercode_33061 = makeNimstrLit("void main(void) {\x0A    gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);\x0A}\x0A");
-var canv_33062 = /**/[document.getElementById("canvas")];
-function initwebgl_33001(canvas_33004) {
+var canvas_29006 = /**/[document.getElementById("glcanvas")];
+var gl_29007 = /**/[canvas_29006[0].getContext("webgl")];
+var vertices_29013 = /**/[nimCopy(null, [-5.0000000000000000e-001, 5.0000000000000000e-001, 0.0, -5.0000000000000000e-001, -5.0000000000000000e-001, 0.0, 5.0000000000000000e-001, -5.0000000000000000e-001, 0.0], NTI29008)];
+var indices_29016 = /**/[nimCopy(null, [0, 1, 2], NTI29014)];
+var vertexbuffer_29017 = /**/[gl_29007[0].createBuffer()];
+gl_29007[0].bindBuffer(34962, vertexbuffer_29017[0]);
+gl_29007[0].bufferData(34962, new Float32Array(vertices_29013[0]), 35044);
+gl_29007[0].bindBuffer(34962, null);
+var Indexbuffer_29022 = /**/[gl_29007[0].createBuffer()];
+gl_29007[0].bindBuffer(34963, Indexbuffer_29022[0]);
+gl_29007[0].bufferData(34963, new Uint16Array(indices_29016[0]), 35044);
+gl_29007[0].bindBuffer(34963, null);
+var vertcode_29027 = /**/[makeNimstrLit("attribute vec3 coordinates;void main(void) { gl_Position = vec4(coordinates, 1.0);}")];
+var vertshader_29029 = /**/[gl_29007[0].createShader(35633)];
+gl_29007[0].shaderSource(vertshader_29029[0], toJSStr(vertcode_29027[0]));
+gl_29007[0].compileShader(vertshader_29029[0]);
+function getstatus_28115(gl_28117, what_28118) {
 
-var result_33005 = null;
-var F={procname:"ex3.initWebGL",prev:framePtr,filename:"ex3.nim",line:0};
-framePtr = F;
-F.line = 5;
-result_33005 = canvas_33004.getContext("webgl");
-framePtr = F.prev;
-return result_33005;
-}
-var gl_33063 = /**/[initwebgl_33001(canv_33062[0])];
-function newseq_33067(len_33071) {
-
-var result_33073 = null;
-var F={procname:"newSeq.newSeq",prev:framePtr,filename:"lib\\system.nim",line:0};
-framePtr = F;
-result_33073 = new Array(len_33071); for (var i=0;i<len_33071;++i) {result_33073[i]=0.0;}framePtr = F.prev;
-return result_33073;
-}
-function makemodel_33043() {
-
-var result_33046 = null;
-var F={procname:"ex3.makeModel",prev:framePtr,filename:"ex3.nim",line:0};
-framePtr = F;
-BeforeRet: do {
-F.line = 28;
-result_33046 = nimCopy(null, [modelx_33041[0][0], modely_33042[0][0], modelx_33041[0][1], modely_33042[0][1], modelx_33041[0][0], modely_33042[0][0], modelx_33041[0][2], modely_33042[0][2], modelx_33041[0][0], modely_33042[0][0], modelx_33041[0][3], modely_33042[0][3], modelx_33041[0][1], modely_33042[0][1], modelx_33041[0][3], modely_33042[0][3], modelx_33041[0][2], modely_33042[0][2], modelx_33041[0][1], modely_33042[0][1], modelx_33041[0][2], modely_33042[0][2], modelx_33041[0][3], modely_33042[0][3]], NTI33058);
-break BeforeRet;
-} while (false); 
-framePtr = F.prev;
-return result_33046;
-}
-var packedmodel_33110 = /**/[newseq_33067((makemodel_33043() != null ? makemodel_33043().length : 0))];
-var vertices_33111 = /**/[gl_33063[0].createBuffer()];
-var vertexshader_33112 = /**/[gl_33063[0].createShader(35633)];
-gl_33063[0].shaderSource(vertexshader_33112[0], toJSStr(vertexshadercode_33060));
-gl_33063[0].compileShader(vertexshader_33112[0]);
-function getstatus_28116(gl_28118, what_28119) {
-
-var result_28120 = false;
+var result_28119 = false;
 var F={procname:"webgl.getStatus",prev:framePtr,filename:"C:\\Dev\\proj\\webgl\\src\\webgl.nim",line:0};
 framePtr = F;
 F.line = 436;
-result_28120 = gl_28118.getShaderParameter(what_28119, gl_28118.COMPILE_STATUS);framePtr = F.prev;
-return result_28120;
+result_28119 = gl_28117.getShaderParameter(what_28118, gl_28117.COMPILE_STATUS);framePtr = F.prev;
+return result_28119;
 }
-function checkshader_33006(gl_33008, shader_33009) {
-
-var F={procname:"ex3.checkShader",prev:framePtr,filename:"ex3.nim",line:0};
-framePtr = F;
-if (!(getstatus_28116(gl_33008, shader_33009))) {
-console.log(gl_33008.getShaderInfoLog(shader_33009));
+if (!(getstatus_28115(gl_29007[0], vertshader_29029[0]))) {
+console.log("error vs");
 }
 
-framePtr = F.prev;
+var fragcode_29033 = /**/[makeNimstrLit("void main(void){gl_FragColor = vec4(0.0, 0.0, 0.0, 0.1);}")];
+var fragshader_29035 = /**/[gl_29007[0].createShader(35632)];
+gl_29007[0].shaderSource(fragshader_29035[0], toJSStr(fragcode_29033[0]));
+gl_29007[0].compileShader(fragshader_29035[0]);
+if (!(getstatus_28115(gl_29007[0], fragshader_29035[0]))) {
+console.log("error fg");
 }
-checkshader_33006(gl_33063[0], vertexshader_33112[0]);
-var fragmentshader_33113 = /**/[gl_33063[0].createShader(35632)];
-gl_33063[0].shaderSource(fragmentshader_33113[0], toJSStr(fragmentshadercode_33061));
-gl_33063[0].compileShader(fragmentshader_33113[0]);
-checkshader_33006(gl_33063[0], fragmentshader_33113[0]);
-var program_33114 = /**/[gl_33063[0].createProgram()];
-gl_33063[0].attachShader(program_33114[0], vertexshader_33112[0]);
-gl_33063[0].attachShader(program_33114[0], fragmentshader_33113[0]);
-gl_33063[0].linkProgram(program_33114[0]);
-function getstatus_28121(gl_28123, what_28124) {
 
-var result_28125 = false;
+var shaderprogram_29039 = /**/[gl_29007[0].createProgram()];
+gl_29007[0].attachShader(shaderprogram_29039[0], vertshader_29029[0]);
+gl_29007[0].attachShader(shaderprogram_29039[0], fragshader_29035[0]);
+gl_29007[0].linkProgram(shaderprogram_29039[0]);
+function getstatus_28120(gl_28122, what_28123) {
+
+var result_28124 = false;
 var F={procname:"webgl.getStatus",prev:framePtr,filename:"C:\\Dev\\proj\\webgl\\src\\webgl.nim",line:0};
 framePtr = F;
 F.line = 438;
-result_28125 = gl_28123.getProgramParameter(what_28124, gl_28123.LINK_STATUS);framePtr = F.prev;
-return result_28125;
+result_28124 = gl_28122.getProgramParameter(what_28123, gl_28122.LINK_STATUS);framePtr = F.prev;
+return result_28124;
 }
-function checkprogram_33013(gl_33015, prog_33016) {
-
-var F={procname:"ex3.checkProgram",prev:framePtr,filename:"ex3.nim",line:0};
-framePtr = F;
-if (!(getstatus_28121(gl_33015, prog_33016))) {
-console.log(gl_33015.getProgramInfoLog(prog_33016));
+if (!(getstatus_28120(gl_29007[0], shaderprogram_29039[0]))) {
+console.log("error p");
 }
 
-framePtr = F.prev;
-}
-checkprogram_33013(gl_33063[0], program_33114[0]);
-var positionattrib_33115 = /**/[gl_33063[0].getAttribLocation(program_33114[0], "position")];
-var theta_33116 = /**/[0.0];
-function HEX2BHEX3D_33142(x_33147, x_33147_Idx, y_33149) {
-
-var F={procname:"+=.+=",prev:framePtr,filename:"lib\\system.nim",line:0};
-framePtr = F;
-F.line = 3392;
-x_33147[x_33147_Idx] = (x_33147[x_33147_Idx] + y_33149);
-framePtr = F.prev;
-}
-function raiseIndexError() {
-
-var e_13284 = null;
-e_13284 = {m_type: NTI3452, parent: null, name: null, message: null, trace: null};
-e_13284.message = nimCopy(null, makeNimstrLit("index out of bounds"), NTI138);
-raiseException(e_13284, "IndexError");
-}
-function draw_33118(gl_33120) {
-
-var F={procname:"ex3.draw",prev:framePtr,filename:"ex3.nim",line:0};
-framePtr = F;
-F.line = 84;
-var bg_33121 = ((Math.cos(theta_33116[0]) + 1.0000000000000000e+000) / 2.0000000000000000e+000);
-F.line = 87;
-var model_33122 = makemodel_33043();
-F.line = 88;
-packedmodel_33110[0] = nimCopy(null, model_33122, NTI33045);
-gl_33120.bindBuffer(34962, vertices_33111[0]);
-gl_33120.bufferData(34962, new Float32Array(packedmodel_33110[0]), 35048);
-gl_33120.bindBuffer(34962, null);
-gl_33120.viewport(0, 0, gl_33120.canvas.width, gl_33120.canvas.height);
-gl_33120.clearColor(bg_33121, 0.0, 0.0, 1.0000000000000000e+000);
-gl_33120.enable(2929);
-gl_33120.depthFunc(515);
-gl_33120.clear(16640);
-gl_33120.useProgram(program_33114[0]);
-gl_33120.bindBuffer(34962, vertices_33111[0]);
-gl_33120.vertexAttribPointer(positionattrib_33115[0], 2, 5126, false, 0, 0);
-gl_33120.enableVertexAttribArray(positionattrib_33115[0]);
-gl_33120.drawArrays(1, 0, divInt((model_33122 != null ? model_33122.length : 0), 2));
-HEX2BHEX3D_33142(theta_33116, 0, 6.1359231515425647e-003);
-L1: do {
-F.line = 114;
-var i_33181 = 0;
-F.line = 3689;
-var i_33191 = 0;
-L2: do {
-F.line = 3690;
-L3: while (true) {
-if (!(i_33191 < 4)) break L3;
-F.line = 3689;
-i_33181 = i_33191;
-F.line = 115;
-var at_33183 = ((theta_33116[0] * 8.0000000000000000e+000) - (addInt(mulInt(i_33181, 4), 1) * 3.1415926535897931e+000));
-if ((0.0 < at_33183)) {
-F.line = 117;
-modelx_33041[0][chckIndx(i_33181, 0, modelx_33041[0].length)-0] = (startx_33025[chckIndx(i_33181, 0, startx_33025.length)-0] + (Math.sin((at_33183 * freqs_33035[chckIndx(i_33181, 0, freqs_33035.length)-0])) / 8.0000000000000000e+000));
-}
-
-i_33191 = addInt(i_33191, 1);
-}
-} while(false);
-} while(false);
-framePtr = F.prev;
-}
-function animloop_33193() {
-
-var F={procname:"ex3.animLoop",prev:framePtr,filename:"ex3.nim",line:0};
-framePtr = F;
-draw_33118(gl_33063[0]);
-F.line = 121;
-window.requestAnimationFrame(animloop_33193);framePtr = F.prev;
-}
-if (!((gl_33063[0] == null))) {
-draw_33118(gl_33063[0]);
-animloop_33193();
-}
-
+gl_29007[0].useProgram(shaderprogram_29039[0]);
+gl_29007[0].bindBuffer(34962, vertexbuffer_29017[0]);
+gl_29007[0].bindBuffer(34963, Indexbuffer_29022[0]);
+var coord_29045 = /**/[gl_29007[0].getAttribLocation(shaderprogram_29039[0], "coordinates")];
+gl_29007[0].vertexAttribPointer(coord_29045[0], 3, 5126, false, 0, 0);
+gl_29007[0].enableVertexAttribArray(coord_29045[0]);
+gl_29007[0].clearColor(5.0000000000000000e-001, 5.0000000000000000e-001, 5.0000000000000000e-001, 9.0000000000000002e-001);
+gl_29007[0].enable(2929);
+gl_29007[0].clear(16384);
+gl_29007[0].viewport(0, 0, canvas_29006[0].width, canvas_29006[0].height);
+gl_29007[0].drawElements(4, 3, 5123, 0);

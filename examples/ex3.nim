@@ -50,7 +50,7 @@ void main(void) {
 """
 
 # Create context
-var canv = dom.document.getElementById("canvas").Canvas
+var canv = dom.document.getElementById("glcanvas").Canvas
 var gl = initWebGL(canv)
 
 # Create a model

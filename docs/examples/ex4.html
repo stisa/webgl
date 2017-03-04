@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="eu">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="Examples for webgl">
+  <meta name="author" content="stisa">
+  <link rel="stylesheet" href="http://stisa.space/css/main.css">
+  <link rel="stylesheet" href="http://stisa.space/css/prism.css">
+  <link rel="apple-touch-icon-precomposed" href="http://stisa.space/favicon-152.png">
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  <meta name="msapplication-TileImage" content="http://stisa.space/favicon-144.png">
+  <style>@media only screen and (min-width: 800px)  { .output { float:left; padding-right:1em;} } </style>
+  <title>Example: ex4</title>
+  <script id="shader-fs" type="x-shader/x-fragment">
+  void main(void) {
+      gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+  }
+  </script>
+
+  <script id="shader-vs" type="x-shader/x-vertex">
+  attribute vec3 aVertexPosition;
+
+  uniform mat4 uMVMatrix;
+  uniform mat4 uPMatrix;
+  
+  void main(void) {
+      gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+  }
+  </script>  
+</head>
+<body>
+  <header class="sidebar">
+
+    <h3>Menu</h3>
+
+    <div class="menu">
+
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/about/">About Me</a>
+      <br/>
+      <a href="/webgl/">webgl</a>
+    </div>
+  </header>
+  <section class="content">
+    <section class="output" id="output">
+      <!--TODO:meaningful output-->
+      <h2>Example: ex4</h2>
+      <canvas style="width:100%; height:100%; min-height:25em;" width="640" height="480" id="glcanvas">
+        Your browser doesn't appear to support the 
+        <code>&lt;canvas&gt;</code> element.
+      </canvas>
+      <script type="text/javascript" src="./ex4.js"></script>
+    </section>
+    <section class="examplecode">
+      <h2>Code</h2>
+      <pre><code class="language-nim">import ../src/webgl,dom
+
+converter toUI(i:int):uint = i.uint
+
+#============== Creating a canvas ====================*/
+var canvas = dom.document.getElementById("glcanvas").Canvas;
+var gl = canvas.getContext("webgl")
+#======== Defining and storing the geometry ===========*/
+
+var vertices = [
+  -0.5'f32,0.5,0.0,
+  -0.5,-0.5,0.0,
+  0.5,-0.5,0.0, 
+];
+
+var indices = [0'u16,1,2];
+
+# Create an empty buffer object to store vertex buffer
+var vertex_buffer = gl.createBuffer();
+
+# Bind appropriate array buffer to it
+gl.bindBuffer(0x8892, vertex_buffer);
+
+# Pass the vertex data to the buffer
+gl.bufferData(0x8892, vertices, 0x88E4);
+
+# Unbind the buffer
+gl.bindBuffer(0x8892, nil);
+
+# Create an empty buffer object to store Index buffer
+var Index_Buffer = gl.createBuffer();
+
+# Bind appropriate array buffer to it
+gl.bindBuffer(0x8893, Index_Buffer);
+
+# Pass the vertex data to the buffer
+gl.bufferData(0x8893, indices, 0x88E4);
+
+# Unbind the buffer
+gl.bindBuffer(0x8893, nil);
+
+#================ Shaders ====================*/
+
+# Vertex shader source code
+var vertCode = "attribute vec3 coordinates;"&
+  "void main(void) {" &
+  " gl_Position = vec4(coordinates, 1.0);" &
+  "}"
+  
+# Create a vertex shader object
+var vertShader = gl.createShader(0x8B31);
+
+# Attach vertex shader source code
+gl.shaderSource(vertShader, vertCode);
+
+# Compile the vertex shader
+gl.compileShader(vertShader);
+if not gl.getStatus(vertShader): log("error vs")
+#fragment shader source code
+var fragCode ="void main(void){" &
+  "gl_FragColor = vec4(0.0, 0.0, 0.0, 0.1);" &
+  "}"
+  
+# Create fragment shader object
+var fragShader = gl.createShader(0x8B30);
+
+# Attach fragment shader source code
+gl.shaderSource(fragShader, fragCode); 
+
+# Compile the fragmentt shader
+gl.compileShader(fragShader);
+if not gl.getStatus(fragShader): log("error fg")
+# Create a shader program object to store
+# the combined shader program
+var shaderProgram = gl.createProgram();
+
+# Attach a vertex shader
+gl.attachShader(shaderProgram, vertShader);
+
+# Attach a fragment shader
+gl.attachShader(shaderProgram, fragShader);
+
+# Link both the programs
+gl.linkProgram(shaderProgram);
+if not gl.getStatus(shaderProgram): log("error p")
+# Use the combined shader program object
+gl.useProgram(shaderProgram);
+
+#======= Associating shaders to buffer objects =======*/
+
+# Bind vertex buffer object
+gl.bindBuffer(0x8892, vertex_buffer);
+
+# Bind index buffer object
+gl.bindBuffer(0x8893, Index_Buffer);
+
+# Get the attribute location
+var coord = gl.getAttribLocation(shaderProgram, "coordinates");
+
+# Point an attribute to the currently bound VBO
+gl.vertexAttribPointer(coord, 3, 0x1406, false, 0, 0); 
+
+# Enable the attribute
+gl.enableVertexAttribArray(coord);
+
+#=========Drawing the triangle===========*/
+
+# Clear the canvas
+gl.clearColor(0.5, 0.5, 0.5, 0.9);
+
+# Enable the depth test
+gl.enable(0x0B71);
+
+# Clear the color buffer bit
+gl.clear(0x00004000);
+
+# Set the view port
+gl.viewport(0,0,canvas.width,canvas.height);
+
+# Draw the triangle
+gl.drawElements(0x0004, indices.len, 0x1403,0) #0x1403 ??
+</code></pre>
+    </section>
+  </section>
+  <script src="http://stisa.space/js/prism.js"></script>
+  
+</body>

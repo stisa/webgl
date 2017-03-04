@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="eu">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="Examples for $project">
+  <meta name="author" content="stisa">
+  <link rel="stylesheet" href="http://stisa.space/css/main.css">
+  <link rel="stylesheet" href="http://stisa.space/css/prism.css">
+  <link rel="apple-touch-icon-precomposed" href="http://stisa.space/favicon-152.png">
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  <meta name="msapplication-TileImage" content="http://stisa.space/favicon-144.png">
+  <style>@media only screen and (min-width: 800px)  { .output { float:left; padding-right:1em;} } </style>
+  <title>Example: $title</title>
+  <script id="shader-fs" type="x-shader/x-fragment">
+  void main(void) {
+      gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+  }
+  </script>
+
+  <script id="shader-vs" type="x-shader/x-vertex">
+  attribute vec3 aVertexPosition;
+
+  uniform mat4 uMVMatrix;
+  uniform mat4 uPMatrix;
+  
+  void main(void) {
+      gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+  }
+  </script>  
+</head>
+<body>
+  <header class="sidebar">
+
+    <h3>Menu</h3>
+
+    <div class="menu">
+
+      <a href="/">Home</a>
+      <a href="/projects/">Projects</a>
+      <a href="/about/">About Me</a>
+      <br/>
+      <a href="/$project/">$project</a>
+    </div>
+  </header>
+  <section class="content">
+    <section class="output" id="output">
+      <!--TODO:meaningful output-->
+      <h2>Example: $title</h2>
+      <canvas style="width:100%; height:100%; min-height:25em;" width="640" height="480" id="glcanvas">
+        Your browser doesn't appear to support the 
+        <code>&lt;canvas&gt;</code> element.
+      </canvas>
+      <script type="text/javascript" src="./$title.js"></script>
+    </section>
+    <section class="examplecode">
+      <h2>Code</h2>
+      <pre><code class="language-nim">$code
+</code></pre>
+    </section>
+  </section>
+  <script src="http://stisa.space/js/prism.js"></script>
+  
+</body>

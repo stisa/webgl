@@ -18,6 +18,7 @@ proc perspective4 (a,b,c,d,e:auto):auto =
 proc initGL(canvas:Canvas) = 
     
     gl = canvas.getContext("webgl")
+    if gl.isNil: gl = canvas.getContext("experimental-webgl")
     viewportWidth = canvas.width;
     viewportHeight = canvas.height;
     

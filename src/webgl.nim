@@ -404,7 +404,7 @@ proc texSubImage2D* (target:uint, level, xoffset, yoffset:int, format, typ:uint,
 proc getContext*(c: Canvas,kind:cstring): WebGLRenderingContext
   ## Get the specified context on the given canvas.
   ## Does NOT account for eg. ``experimental-webgl`` vs ``webgl`` etc.
-  ## See ``getContextWebgl``for that
+  ## See ``getContextWebgl`` for that
   ## Example:
   ## .. code-block:: nim
   ## var canvas = dom.document.getElementById("canvas").Canvas

@@ -2,7 +2,9 @@ import dom,../src/webgl,math
 
 #utils
 
-proc initWebGL(canvas:webgl.Canvas): WebGLRenderingContext {.inline.} = canvas.getContext("webgl")
+proc initWebGL(canvas:webgl.Canvas): WebGLRenderingContext {.inline.} = 
+  result = canvas.getContext("webgl")
+  if result.isNil: result = canvas.getContext("experimental-webgl")
 
 proc checkShader(gl:WebGLRenderingContext,shader:WebGLShader) = 
   if not gl.getStatus(shader): log gl.getShaderInfoLog(shader)

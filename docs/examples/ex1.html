@@ -152,6 +152,7 @@ dom.window.onload = proc (e: dom.Event) =
     echo sizeof(GLfloat)
     var canvas = dom.document.getElementById("glcanvas").Canvas;
     var gl = canvas.getContext("webgl")
+    if gl.isNil: gl = canvas.getContext("experimental-webgl")
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0);  # Clear to black, fully opaque 
     gl.clearDepth(1.0);                 # Clear everything 

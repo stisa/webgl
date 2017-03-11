@@ -39,9 +39,9 @@ proc getShader(gl:WebGLRenderingContext, id:cstring,stype:cstring):WebGLShader =
     {. emit : "console.log(`stype`+`str`);" .}]#
 
     if (stype == "x-shader/x-fragment") :
-        result = gl.createShader(FRAGMENT_SHADER)
+        result = gl.createShader(seFRAGMENT_SHADER)
     elif (stype == "x-shader/x-vertex"): 
-        result = gl.createShader(VERTEX_SHADER);
+        result = gl.createShader(seVERTEX_SHADER);
     else :
         return;
 
@@ -51,7 +51,7 @@ proc getShader(gl:WebGLRenderingContext, id:cstring,stype:cstring):WebGLShader =
     {. emit: "if (!`gl`.getShaderParameter(`result`, `gl`.COMPILE_STATUS)){alert(`stype`+' '+`gl`.getShaderInfoLog(`result`));return null;};" .}
 
 var shaderProgram: WebGLProgram
-var vertexPositionAttribute:GLuint
+var vertexPositionAttribute:uint
 var pMatrixUniform:WebGLUniformLocation
 var mvMatrixUniform:WebGLUniformLocation
 
@@ -87,25 +87,25 @@ var vin : tuple[itemSize,numItems:int]
 
 proc initBuffers() =
     triangleVertexPositionBuffer = gl.createBuffer();
-    gl.bindBuffer(ARRAY_BUFFER, triangleVertexPositionBuffer);
+    gl.bindBuffer(beARRAY_BUFFER, triangleVertexPositionBuffer);
     var vertices = @[
             0.0,  1.0,  0.0,
         -1.0, -1.0,  0.0,
             1.0, -1.0,  0.0
     ];
-    gl.bufferData(ARRAY_BUFFER, vertices, STATIC_DRAW);
+    gl.bufferData(beARRAY_BUFFER, vertices, beSTATIC_DRAW);
     tin.itemSize = 3;
     tin.numItems = 3;
 
     squareVertexPositionBuffer = gl.createBuffer();
-    gl.bindBuffer(ARRAY_BUFFER, squareVertexPositionBuffer);
+    gl.bindBuffer(beARRAY_BUFFER, squareVertexPositionBuffer);
     var vertices2 = @[
             1.0,  1.0,  0.0,
         -1.0,  1.0,  0.0,
             1.0, -1.0,  0.0,
         -1.0, -1.0,  0.0
     ];
-    gl.bufferData(ARRAY_BUFFER, vertices2, STATIC_DRAW);
+    gl.bufferData(beARRAY_BUFFER, vertices2, beSTATIC_DRAW);
     vin.itemSize = 3;
     vin.numItems = 4;
 
@@ -113,7 +113,7 @@ proc initBuffers() =
 
 proc drawScene() =
     gl.viewport(0, 0, viewportWidth, viewportHeight);
-    gl.clear(COLOR_BUFFER_BIT or DEPTH_BUFFER_BIT);
+    gl.clear(bbCOLOR.uint or bbDEPTH.uint);
 
     perspective4(45, viewportWidth / viewportHeight, 0.1, 100.0, pMatrix);
         
@@ -121,17 +121,17 @@ proc drawScene() =
 
     traslate4(mvMatrix, @[-1.5, 0.0, -7.0], mvMatrix);
 
-    gl.bindBuffer(ARRAY_BUFFER, triangleVertexPositionBuffer);
-    gl.vertexAttribPointer(vertexPositionAttribute, tin.itemSize, FLOAT, false, 0, 0);
+    gl.bindBuffer(beARRAY_BUFFER, triangleVertexPositionBuffer);
+    gl.vertexAttribPointer(vertexPositionAttribute, tin.itemSize, dtFLOAT, false, 0, 0);
     setMatrixUniforms();
-    gl.drawArrays(TRIANGLES, 0, tin.numItems);
+    gl.drawArrays(pmTRIANGLES, 0, tin.numItems);
 
 
     traslate4(mvMatrix, @[3.0, 0.0, 0.0], mvMatrix);
-    gl.bindBuffer(ARRAY_BUFFER, squareVertexPositionBuffer);
-    gl.vertexAttribPointer(vertexPositionAttribute, vin.itemSize, FLOAT, false, 0, 0);
+    gl.bindBuffer(beARRAY_BUFFER, squareVertexPositionBuffer);
+    gl.vertexAttribPointer(vertexPositionAttribute, vin.itemSize, dtFLOAT, false, 0, 0);
     setMatrixUniforms();
-    gl.drawArrays(TRIANGLE_STRIP, 0, vin.numItems);
+    gl.drawArrays(pmTRIANGLE_STRIP, 0, vin.numItems);
 
 
 
@@ -143,7 +143,6 @@ dom.window.onload = proc (e: dom.Event) =
     initBuffers();
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
-    gl.enable(DEPTH_TEST);
 
     drawScene();
 

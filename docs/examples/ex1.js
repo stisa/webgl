@@ -488,33 +488,33 @@ var vertices_29106 = nimCopy(null, [1.0000000000000000e+000, 1.0000000000000000e
 gl_29077.bufferData(34962, new Float32Array(vertices_29106), 35044);
 framePtr = F.prev;
 }
-function newSeq_29153(len_29157) {
+function newSeq_29163(len_29167) {
 
-var result_29159 = null;
+var result_29169 = null;
 var F={procname:"newSeq.newSeq",prev:framePtr,filename:"lib\\system.nim",line:0};
 framePtr = F;
-result_29159 = new Array(len_29157); for (var i=0;i<len_29157;++i) {result_29159[i]=0.0;}framePtr = F.prev;
-return result_29159;
+result_29169 = new Array(len_29167); for (var i=0;i<len_29167;++i) {result_29169[i]=0.0;}framePtr = F.prev;
+return result_29169;
 }
 function perspective4_29192(a_29200, b_29202, c_29204, d_29206, e_29208) {
 
 var F={procname:"perspective4.perspective4",prev:framePtr,filename:"C:\\Users\\stisa\\OneDrive\\Progetti\\webgl\\src\\webgl.nim",line:0};
 framePtr = F;
-F.line = 482;
+F.line = 483;
 function frustum(a,b,c,d,e,g,f){var h=b-a,i=d-c,j=g-e;f[0]=e*2/h;f[1]=0;f[2]=0;f[3]=0;f[4]=0;f[5]=e*2/i;f[6]=0;f[7]=0;f[8]=(b+a)/h;f[9]=(d+c)/i;f[10]=-(g+e)/j;f[11]=-1;f[12]=0;f[13]=0;f[14]=-(g*e*2)/j;f[15]=0;return f;};a_29200=c_29204*Math.tan(a_29200*Math.PI/360);b_29202=a_29200*b_29202;result_29209 = frustum(-b_29202,b_29202,-a_29200,a_29200,c_29204,d_29206,e_29208);framePtr = F.prev;
 }
 function identity4_29241(a_29245) {
 
 var F={procname:"identity4.identity4",prev:framePtr,filename:"C:\\Users\\stisa\\OneDrive\\Progetti\\webgl\\src\\webgl.nim",line:0};
 framePtr = F;
-F.line = 474;
+F.line = 475;
 a_29245[0]=1;a_29245[1]=0;a_29245[2]=0;a_29245[3]=0;a_29245[4]=0;a_29245[5]=1;a_29245[6]=0;a_29245[7]=0;a_29245[8]=0;a_29245[9]=0;a_29245[10]=1;a_29245[11]=0;a_29245[12]=0;a_29245[13]=0;a_29245[14]=0;a_29245[15]=1;result_29246=a_29245framePtr = F.prev;
 }
 function traslate4_29253(a_29259, b_29261, c_29263) {
 
 var F={procname:"traslate4.traslate4",prev:framePtr,filename:"C:\\Users\\stisa\\OneDrive\\Progetti\\webgl\\src\\webgl.nim",line:0};
 framePtr = F;
-F.line = 478;
+F.line = 479;
 var d=b_29261[0],e=b_29261[1];b_29261=b_29261[2];if(!c_29263||a_29259==c_29263){a_29259[12]=a_29259[0]*d+a_29259[4]*e+a_29259[8]*b_29261+a_29259[12];a_29259[13]=a_29259[1]*d+a_29259[5]*e+a_29259[9]*b_29261+a_29259[13];a_29259[14]=a_29259[2]*d+a_29259[6]*e+a_29259[10]*b_29261+a_29259[14];a_29259[15]=a_29259[3]*d+a_29259[7]*e+a_29259[11]*b_29261+a_29259[15];return a_29259}var g=a_29259[0],f=a_29259[1],h=a_29259[2],i=a_29259[3],j=a_29259[4],k=a_29259[5],l=a_29259[6],o=a_29259[7],m=a_29259[8],n=a_29259[9],p=a_29259[10],r=a_29259[11];c_29263[0]=g;c_29263[1]=f;c_29263[2]=h;c_29263[3]=i;c_29263[4]=j;c_29263[5]=k;c_29263[6]=l;c_29263[7]=o;c_29263[8]=m;c_29263[9]=n;c_29263[10]=p;c_29263[11]=r;c_29263[12]=g*d+j*e+m*b_29261+a_29259[12];c_29263[13]=f*d+k*e+n*b_29261+a_29259[13];c_29263[14]=h*d+l*e+p*b_29261+a_29259[14];c_29263[15]=i*d+o*e+r*b_29261+a_29259[15];result_29264 = c_29263;framePtr = F.prev;
 }
 function setMatrixUniforms_29122(gl_29124, pm_29126, mv_29127) {
@@ -535,10 +535,10 @@ var F={procname:"ex1.drawScene",prev:framePtr,filename:"ex1.nim",line:0};
 framePtr = F;
 gl_29132.clear(16640);
 F.line = 75;
-var perspectiveMatrix_29188 = newSeq_29153(16);
+var perspectiveMatrix_29188 = newSeq_29163(16);
 perspective4_29192(45, 1.3333333333333333e+000, 1.0000000000000001e-001, 1.0000000000000000e+002, perspectiveMatrix_29188);
 F.line = 79;
-var mv_29239 = newSeq_29153(16);
+var mv_29239 = newSeq_29163(16);
 identity4_29241(mv_29239);
 traslate4_29253(mv_29239, [0.0, 0.0, -6.0000000000000000e+000], mv_29239);
 gl_29132.bindBuffer(34962, squareVerticesBuffer_29073[0]);
@@ -553,22 +553,21 @@ var F={procname:"ex1.:anonymous",prev:framePtr,filename:"ex1.nim",line:0};
 framePtr = F;
 rawEcho(makeNimstrLit("4"));
 rawEcho(makeNimstrLit("4"));
-rawEcho(makeNimstrLit("4"));
+rawEcho(makeNimstrLit("8"));
 F.line = 93;
-var canvas_29319 = document.getElementById("glcanvas");
+var canvas_29320 = document.getElementById("glcanvas");
 F.line = 94;
-var gl_29320 = canvas_29319.getContext("webgl");
-if ((gl_29320 === null)) {
+var gl_29321 = canvas_29320.getContext("webgl");
+if ((gl_29321 === null)) {
 F.line = 95;
-gl_29320 = canvas_29319.getContext("experimental-webgl");
+gl_29321 = canvas_29320.getContext("experimental-webgl");
 }
 
-gl_29320.clearColor(0.0, 0.0, 0.0, 1.0000000000000000e+000);
-gl_29320.clearDepth(1.0000000000000000e+000);
-gl_29320.enable(2929);
-initShaders_29068(gl_29320);
-initBuffers_29075(gl_29320);
-drawScene_29130(gl_29320);
+gl_29321.clearColor(0.0, 0.0, 0.0, 1.0000000000000000e+000);
+gl_29321.clearDepth(1.0000000000000000e+000);
+initShaders_29068(gl_29321);
+initBuffers_29075(gl_29321);
+drawScene_29130(gl_29321);
 framePtr = F.prev;
 }
 window.onload = colonanonymous__29306;

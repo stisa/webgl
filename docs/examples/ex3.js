@@ -456,13 +456,13 @@ framePtr = F.prev;
 return result_33005;
 }
 var gl_33071 = /**/[initWebGL_33001(canv_33070[0])];
-function newSeq_33075(len_33079) {
+function newSeq_33085(len_33089) {
 
-var result_33081 = null;
+var result_33091 = null;
 var F={procname:"newSeq.newSeq",prev:framePtr,filename:"lib\\system.nim",line:0};
 framePtr = F;
-result_33081 = new Array(len_33079); for (var i=0;i<len_33079;++i) {result_33081[i]=0.0;}framePtr = F.prev;
-return result_33081;
+result_33091 = new Array(len_33089); for (var i=0;i<len_33089;++i) {result_33091[i]=0.0;}framePtr = F.prev;
+return result_33091;
 }
 function makeModel_33051() {
 
@@ -477,25 +477,25 @@ break BeforeRet;
 framePtr = F.prev;
 return result_33054;
 }
-var packedModel_33118 = /**/[newSeq_33075((makeModel_33051() != null ? makeModel_33051().length : 0))];
+var packedModel_33118 = /**/[newSeq_33085((makeModel_33051() != null ? makeModel_33051().length : 0))];
 var vertices_33119 = /**/[gl_33071[0].createBuffer()];
 var vertexShader_33129 = /**/[gl_33071[0].createShader(35633)];
 gl_33071[0].shaderSource(vertexShader_33129[0], toJSStr(vertexShaderCode_33068));
 gl_33071[0].compileShader(vertexShader_33129[0]);
-function getStatus_28429(gl_28431, what_28432) {
+function getStatus_28029(gl_28031, what_28032) {
 
-var result_28433 = false;
+var result_28033 = false;
 var F={procname:"webgl.getStatus",prev:framePtr,filename:"C:\\Users\\stisa\\OneDrive\\Progetti\\webgl\\src\\webgl.nim",line:0};
 framePtr = F;
-F.line = 445;
-result_28433 = gl_28431.getShaderParameter(what_28432, gl_28431.COMPILE_STATUS);framePtr = F.prev;
-return result_28433;
+F.line = 446;
+result_28033 = gl_28031.getShaderParameter(what_28032, gl_28031.COMPILE_STATUS);framePtr = F.prev;
+return result_28033;
 }
 function checkShader_33014(gl_33016, shader_33017) {
 
 var F={procname:"ex3.checkShader",prev:framePtr,filename:"ex3.nim",line:0};
 framePtr = F;
-if (!(getStatus_28429(gl_33016, shader_33017))) {
+if (!(getStatus_28029(gl_33016, shader_33017))) {
 console.log(gl_33016.getShaderInfoLog(shader_33017));
 }
 
@@ -510,20 +510,20 @@ var program_33140 = /**/[gl_33071[0].createProgram()];
 gl_33071[0].attachShader(program_33140[0], vertexShader_33129[0]);
 gl_33071[0].attachShader(program_33140[0], fragmentShader_33139[0]);
 gl_33071[0].linkProgram(program_33140[0]);
-function getStatus_28434(gl_28436, what_28437) {
+function getStatus_28034(gl_28036, what_28037) {
 
-var result_28438 = false;
+var result_28038 = false;
 var F={procname:"webgl.getStatus",prev:framePtr,filename:"C:\\Users\\stisa\\OneDrive\\Progetti\\webgl\\src\\webgl.nim",line:0};
 framePtr = F;
-F.line = 447;
-result_28438 = gl_28436.getProgramParameter(what_28437, gl_28436.LINK_STATUS);framePtr = F.prev;
-return result_28438;
+F.line = 448;
+result_28038 = gl_28036.getProgramParameter(what_28037, gl_28036.LINK_STATUS);framePtr = F.prev;
+return result_28038;
 }
 function checkProgram_33021(gl_33023, prog_33024) {
 
 var F={procname:"ex3.checkProgram",prev:framePtr,filename:"ex3.nim",line:0};
 framePtr = F;
-if (!(getStatus_28434(gl_33023, prog_33024))) {
+if (!(getStatus_28034(gl_33023, prog_33024))) {
 console.log(gl_33023.getProgramInfoLog(prog_33024));
 }
 
@@ -563,8 +563,6 @@ gl_33146.bufferData(34962, new Float32Array(packedModel_33118[0]), 35048);
 gl_33146.bindBuffer(34962, null);
 gl_33146.viewport(0, 0, gl_33146.canvas.width, gl_33146.canvas.height);
 gl_33146.clearColor(bg_33147, 0.0, 0.0, 1.0000000000000000e+000);
-gl_33146.enable(2929);
-gl_33146.depthFunc(515);
 gl_33146.clear(16640);
 gl_33146.useProgram(program_33140[0]);
 gl_33146.bindBuffer(34962, vertices_33119[0]);

@@ -388,16 +388,16 @@ var shaderProgram_29096 = [null];
 var vertexPositionAttribute_29098 = [0];
 var pMatrixUniform_29100 = [null];
 var mvMatrixUniform_29102 = [null];
-function newSeq_29111(len_29115) {
+function newSeq_29121(len_29125) {
 
-var result_29117 = null;
+var result_29127 = null;
 var F={procname:"newSeq.newSeq",prev:framePtr,filename:"lib\\system.nim",line:0};
 framePtr = F;
-result_29117 = new Array(len_29115); for (var i=0;i<len_29115;++i) {result_29117[i]=0.0;}framePtr = F.prev;
-return result_29117;
+result_29127 = new Array(len_29125); for (var i=0;i<len_29125;++i) {result_29127[i]=0.0;}framePtr = F.prev;
+return result_29127;
 }
-var mvMatrix_29146 = /**/[newSeq_29111(16)];
-var pMatrix_29175 = /**/[newSeq_29111(16)];
+var mvMatrix_29146 = /**/[newSeq_29121(16)];
+var pMatrix_29175 = /**/[newSeq_29121(16)];
 var triangleVertexPositionBuffer_29178 = [null];
 var squareVertexPositionBuffer_29180 = [null];
 var tin_29185 = [{Field0: 0, Field1: 0}];
@@ -532,7 +532,7 @@ function traslate4_29341(a_29347, b_29349, c_29351) {
 
 var F={procname:"traslate4.traslate4",prev:framePtr,filename:"C:\\Users\\stisa\\OneDrive\\Progetti\\webgl\\src\\webgl.nim",line:0};
 framePtr = F;
-F.line = 478;
+F.line = 479;
 var d=b_29349[0],e=b_29349[1];b_29349=b_29349[2];if(!c_29351||a_29347==c_29351){a_29347[12]=a_29347[0]*d+a_29347[4]*e+a_29347[8]*b_29349+a_29347[12];a_29347[13]=a_29347[1]*d+a_29347[5]*e+a_29347[9]*b_29349+a_29347[13];a_29347[14]=a_29347[2]*d+a_29347[6]*e+a_29347[10]*b_29349+a_29347[14];a_29347[15]=a_29347[3]*d+a_29347[7]*e+a_29347[11]*b_29349+a_29347[15];return a_29347}var g=a_29347[0],f=a_29347[1],h=a_29347[2],i=a_29347[3],j=a_29347[4],k=a_29347[5],l=a_29347[6],o=a_29347[7],m=a_29347[8],n=a_29347[9],p=a_29347[10],r=a_29347[11];c_29351[0]=g;c_29351[1]=f;c_29351[2]=h;c_29351[3]=i;c_29351[4]=j;c_29351[5]=k;c_29351[6]=l;c_29351[7]=o;c_29351[8]=m;c_29351[9]=n;c_29351[10]=p;c_29351[11]=r;c_29351[12]=g*d+j*e+m*b_29349+a_29347[12];c_29351[13]=f*d+k*e+n*b_29349+a_29347[13];c_29351[14]=h*d+l*e+p*b_29349+a_29347[14];c_29351[15]=i*d+o*e+r*b_29349+a_29347[15];result_29352 = c_29351;framePtr = F.prev;
 }
 function setMatrixUniforms_29176() {
@@ -573,7 +573,6 @@ initGL_29046(canvas_29464);
 initShaders_29104();
 initBuffers_29192();
 gl_29001[0].clearColor(0.0, 0.0, 0.0, 1.0000000000000000e+000);
-gl_29001[0].enable(2929);
 drawScene_29277();
 framePtr = F.prev;
 }

@@ -1,6 +1,6 @@
 import dom, ../src/webgl
 
-var vertexPositionAttribute : GLuint 
+var vertexPositionAttribute : uint 
 
 proc getShader(gl:WebGLRenderingContext, id:string, kind:char):WebGLShader =
     var shaderScript = dom.document.getElementById(id)
@@ -12,8 +12,8 @@ proc getShader(gl:WebGLRenderingContext, id:string, kind:char):WebGLShader =
             theSource &= currentChild.nodeValue
         currentChild = currentChild.nextSibling
     
-    if(kind == 'f'): result = gl.createShader(FRAGMENT_SHADER)
-    elif(kind == 'v'): result = gl.createShader(VERTEX_SHADER)
+    if(kind == 'f'): result = gl.createShader(seFRAGMENT_SHADER)
+    elif(kind == 'v'): result = gl.createShader(seVERTEX_SHADER)
     else: return #unknown shader type
 
     gl.shaderSource(result, theSource)
@@ -50,7 +50,7 @@ var squareVerticesBuffer : WebGLBuffer
 proc initBuffers(gl:WebGLRenderingContext) =
     squareVerticesBuffer = gl.createBuffer()
 
-    gl.bindBuffer(ARRAY_BUFFER, squareVerticesBuffer)
+    gl.bindBuffer(beARRAY_BUFFER, squareVerticesBuffer)
 
     var vertices :seq[float32]= @[
         1.0'f32,  1.0,  0.0,
@@ -59,10 +59,10 @@ proc initBuffers(gl:WebGLRenderingContext) =
         -1.0, -1.0, 0.0
     ];
     
-    gl.bufferData(ARRAY_BUFFER, vertices, STATIC_DRAW);
+    gl.bufferData(beARRAY_BUFFER, vertices, beSTATIC_DRAW);
 
 
-proc setMatrixUniforms(gl:WebGLRenderingContext,pm, mv: seq[GLfloat]) =
+proc setMatrixUniforms(gl:WebGLRenderingContext,pm, mv: seq[float]) =
     var pUniform = gl.getUniformLocation(shaderProgram,"uPMatrix")
     gl.uniformMatrix4fv(pUniform,false, pm)
 
@@ -70,36 +70,33 @@ proc setMatrixUniforms(gl:WebGLRenderingContext,pm, mv: seq[GLfloat]) =
     gl.uniformMatrix4fv(mvUniform,false, mv)
 
 proc drawScene(gl:WebGLRenderingContext) =
-    gl.clear(COLOR_BUFFER_BIT or DEPTH_BUFFER_BIT);
+    gl.clear(bbCOLOR.uint or bbDEPTH.uint);
     
-    var perspectiveMatrix = newSeq[GLfloat](16)
+    var perspectiveMatrix = newSeq[float](16)
     perspective4(45, 640.0/480.0, 0.1, 100.0, perspectiveMatrix);
     
 
-    var mv = newSeq[GLfloat](16)
+    var mv = newSeq[float](16)
     mv.identity4();
     mv.traslate4([-0.0, 0.0, -6.0],mv);
     
-    gl.bindBuffer(ARRAY_BUFFER, squareVerticesBuffer);
-    gl.vertexAttribPointer(vertexPositionAttribute, 3, FLOAT, false, 0, 0);
+    gl.bindBuffer(beARRAY_BUFFER, squareVerticesBuffer);
+    gl.vertexAttribPointer(vertexPositionAttribute, 3, dtFLOAT, false, 0, 0);
     setMatrixUniforms(gl,perspectiveMatrix,mv);
-    gl.drawArrays(TRIANGLE_STRIP, 0, 4);
+    gl.drawArrays(pmTRIANGLE_STRIP, 0, 4);
 
 
 dom.window.onload = proc (e: dom.Event) =
     echo sizeof(int)
     echo sizeof(uint)
-    echo sizeof(GLfloat)
+    echo sizeof(float)
     var canvas = dom.document.getElementById("glcanvas").Canvas;
     var gl = canvas.getContext("webgl")
     if gl.isNil: gl = canvas.getContext("experimental-webgl")
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0);  # Clear to black, fully opaque 
     gl.clearDepth(1.0);                 # Clear everything 
-    gl.enable(DEPTH_TEST);           # Enable depth testing 
- #   gl.depthFunc(LEQUAL);            # Near things obscure far things 
-
-
+    
     # Initialize the shaders; this is where all the lighting for the 
     # vertices and so forth is established.  
 

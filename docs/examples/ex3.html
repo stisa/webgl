@@ -120,13 +120,13 @@ var packedModel = newSeq[float](makeModel().len)# newFloat32Array(makeModel().le
 var vertices = gl.createBuffer()
 
 # Create vertex shader
-var vertexShader = gl.createShader(webgl.VERTEX_SHADER)
+var vertexShader = gl.createShader(seVERTEX_SHADER)
 gl.shaderSource(vertexShader, vertexShaderCode)
 gl.compileShader(vertexShader)
 gl.checkShader(vertexShader)
 
 # Create fragment shader
-var fragmentShader = gl.createShader(webgl.FRAGMENT_SHADER)
+var fragmentShader = gl.createShader(seFRAGMENT_SHADER)
 gl.shaderSource(fragmentShader, fragmentShaderCode)
 gl.compileShader(fragmentShader)
 gl.checkShader(fragmentShader)
@@ -150,25 +150,25 @@ proc draw(gl:WebGLRenderingContext)=
     packedModel = model
     #for i in 0..<model.len:
     #    float32Set(packedModel, i.float, model[i])
-    gl.bindBuffer(webgl.ARRAY_BUFFER, vertices)
-    gl.bufferData(webgl.ARRAY_BUFFER, packedModel, webgl.DYNAMIC_DRAW)
-    gl.bindBuffer(webgl.ARRAY_BUFFER, nil)
+    gl.bindBuffer(beARRAY_BUFFER, vertices)
+    gl.bufferData(beARRAY_BUFFER, packedModel, beDYNAMIC_DRAW)
+    gl.bindBuffer(beARRAY_BUFFER, nil)
 
     # Set display properties and clear screen
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
     gl.clearColor(bg, 0.0, 0.0, 1.0)
-    gl.enable(webgl.DEPTH_TEST)
-    gl.depthFunc(webgl.LEQUAL) # Near things obscure far things
-    gl.clear(webgl.COLOR_BUFFER_BIT or webgl.DEPTH_BUFFER_BIT)
+    #gl.enable(webgl.DEPTH_TEST)
+    #gl.depthFunc(webgl.LEQUAL) # Near things obscure far things
+    gl.clear(bbCOLOR.uint or bbDEPTH.uint)
 
     # Set up draw
     gl.useProgram(program)
-    gl.bindBuffer(webgl.ARRAY_BUFFER, vertices)
-    gl.vertexAttribPointer(positionAttrib, 2, webgl.FLOAT, false, 0, 0)
+    gl.bindBuffer(beARRAY_BUFFER, vertices)
+    gl.vertexAttribPointer(positionAttrib, 2, dtFLOAT, false, 0, 0)
     gl.enableVertexAttribArray(positionAttrib)
 
     # Draw
-    gl.drawArrays(webgl.LINES, 0, (model.len div 2) )
+    gl.drawArrays(pmLINES, 0, (model.len div 2) )
 
     # State updates: do a silly, trivial animation.
     # Wobble each of the four anchors for the model at a slightly different rate.

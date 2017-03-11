@@ -1,5 +1,6 @@
 import dom
-include webglconsts
+import webgl/enums
+export enums
 
 
 #TODO: https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Types

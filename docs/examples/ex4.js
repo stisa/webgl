@@ -414,26 +414,26 @@ framePtr = F;
 raiseAssert_21616(msg_21641);
 framePtr = F.prev;
 }
-function getContextWebgl_28239(c_28241) {
+function getContextWebgl_27957(c_27959) {
 
-var result_28242 = null;
+var result_27960 = null;
 var F={procname:"webgl.getContextWebgl",prev:framePtr,filename:"C:\\Users\\stisa\\OneDrive\\Progetti\\webgl\\src\\webgl.nim",line:0};
 framePtr = F;
-F.line = 424;
-result_28242 = c_28241.getContext("webgl");
-if ((result_28242 === null)) {
 F.line = 425;
-result_28242 = c_28241.getContext("experimental-webgl");
+result_27960 = c_27959.getContext("webgl");
+if ((result_27960 === null)) {
+F.line = 426;
+result_27960 = c_27959.getContext("experimental-webgl");
 }
 
-if (!(!((result_28242 === null)))) {
+if (!(!((result_27960 === null)))) {
 failedAssertImpl_21639(makeNimstrLit("not isNil(result) "));
 }
 
 framePtr = F.prev;
-return result_28242;
+return result_27960;
 }
-var gl_29007 = /**/[getContextWebgl_28239(canvas_29006[0])];
+var gl_29007 = /**/[getContextWebgl_27957(canvas_29006[0])];
 var vertices_29013 = /**/[nimCopy(null, [-5.0000000000000000e-001, 5.0000000000000000e-001, 0.0, -5.0000000000000000e-001, -5.0000000000000000e-001, 0.0, 5.0000000000000000e-001, -5.0000000000000000e-001, 0.0], NTI29008)];
 var indices_29016 = /**/[nimCopy(null, [0, 1, 2], NTI29014)];
 var vertex_buffer_29017 = /**/[gl_29007[0].createBuffer()];
@@ -448,16 +448,16 @@ var vertCode_29087 = /**/[makeNimstrLit("attribute vec3 coordinates;void main(vo
 var vertShader_29097 = /**/[gl_29007[0].createShader(35633)];
 gl_29007[0].shaderSource(vertShader_29097[0], toJSStr(vertCode_29087[0]));
 gl_29007[0].compileShader(vertShader_29097[0]);
-function getStatus_28429(gl_28431, what_28432) {
+function getStatus_28029(gl_28031, what_28032) {
 
-var result_28433 = false;
+var result_28033 = false;
 var F={procname:"webgl.getStatus",prev:framePtr,filename:"C:\\Users\\stisa\\OneDrive\\Progetti\\webgl\\src\\webgl.nim",line:0};
 framePtr = F;
-F.line = 445;
-result_28433 = gl_28431.getShaderParameter(what_28432, gl_28431.COMPILE_STATUS);framePtr = F.prev;
-return result_28433;
+F.line = 446;
+result_28033 = gl_28031.getShaderParameter(what_28032, gl_28031.COMPILE_STATUS);framePtr = F.prev;
+return result_28033;
 }
-if (!(getStatus_28429(gl_29007[0], vertShader_29097[0]))) {
+if (!(getStatus_28029(gl_29007[0], vertShader_29097[0]))) {
 console.log("error vs");
 }
 
@@ -465,7 +465,7 @@ var fragCode_29101 = /**/[makeNimstrLit("void main(void){gl_FragColor = vec4(0.0
 var fragShader_29111 = /**/[gl_29007[0].createShader(35632)];
 gl_29007[0].shaderSource(fragShader_29111[0], toJSStr(fragCode_29101[0]));
 gl_29007[0].compileShader(fragShader_29111[0]);
-if (!(getStatus_28429(gl_29007[0], fragShader_29111[0]))) {
+if (!(getStatus_28029(gl_29007[0], fragShader_29111[0]))) {
 console.log("error fg");
 }
 
@@ -473,16 +473,16 @@ var shaderProgram_29115 = /**/[gl_29007[0].createProgram()];
 gl_29007[0].attachShader(shaderProgram_29115[0], vertShader_29097[0]);
 gl_29007[0].attachShader(shaderProgram_29115[0], fragShader_29111[0]);
 gl_29007[0].linkProgram(shaderProgram_29115[0]);
-function getStatus_28434(gl_28436, what_28437) {
+function getStatus_28034(gl_28036, what_28037) {
 
-var result_28438 = false;
+var result_28038 = false;
 var F={procname:"webgl.getStatus",prev:framePtr,filename:"C:\\Users\\stisa\\OneDrive\\Progetti\\webgl\\src\\webgl.nim",line:0};
 framePtr = F;
-F.line = 447;
-result_28438 = gl_28436.getProgramParameter(what_28437, gl_28436.LINK_STATUS);framePtr = F.prev;
-return result_28438;
+F.line = 448;
+result_28038 = gl_28036.getProgramParameter(what_28037, gl_28036.LINK_STATUS);framePtr = F.prev;
+return result_28038;
 }
-if (!(getStatus_28434(gl_29007[0], shaderProgram_29115[0]))) {
+if (!(getStatus_28034(gl_29007[0], shaderProgram_29115[0]))) {
 console.log("error p");
 }
 

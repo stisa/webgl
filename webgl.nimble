@@ -5,6 +5,9 @@ description   = "Basic wrapper for WebGL."
 license       = "MIT"
 
 srcDir = "src"
+
+skipDirs = @["oldwrapper","templates"]
+
 # Deps
 requires: "nim >= 0.16.0"
 
@@ -16,6 +19,8 @@ task docs, "Build docs folder - examples and documentation":
   #exec("nim js -o:docs/ex3.js examples/ex3.nim")
   exec("exampler") # custom utility to generate example pages
   exec("nim doc2 -o:" & "docs"/"webgl.html " & "src"/"webgl.nim")
+  exec("nim doc2 -o:" & "docs"/"enums.html " & "src"/"webgl"/"enums.nim")
+  exec("nim doc2 -o:" & "docs"/"consts.html " & "src"/"webgl"/"consts.nim")
   withdir "examples":
     for file in listfiles("."):
       if splitfile(file).ext == ".nim":

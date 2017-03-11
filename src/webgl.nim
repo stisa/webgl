@@ -337,13 +337,7 @@ proc flush* (gl:WebglRenderingContext)
 proc bufferData*(gl:WebGLRenderingContext, target:uint|BufferEnum, size:int64, usage:uint|BufferEnum)  
   ## Updates buffer data.
 
-proc bufferData*(gl:WebGLRenderingContext, target:uint|BufferEnum, data:Int32Array, usage:uint|BufferEnum) 
-  ## Updates buffer data.
-
-proc bufferData*(gl:WebGLRenderingContext, target:uint|BufferEnum, data:Uint16Array, usage:uint|BufferEnum) 
-  ## Updates buffer data.
-
-proc bufferData*(gl:WebGLRenderingContext, target:uint|BufferEnum, data:Float32Array, usage:uint|BufferEnum) 
+proc bufferData*(gl:WebGLRenderingContext, target:uint|BufferEnum, data:Int32Array|Uint16Array|Float32Array, usage:uint|BufferEnum) 
   ## Updates buffer data.
 
 proc bufferSubData*(gl:WebGLRenderingContext,target:uint, offset:int64, data:auto) 

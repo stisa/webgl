@@ -13,17 +13,17 @@ if (typeof Uint32Array === 'undefined') Uint32Array = Array;
 if (typeof Float32Array === 'undefined') Float32Array = Array;
 if (typeof Float64Array === 'undefined') Float64Array = Array;
 var NTI118 = {size: 0,kind: 42,base: null,node: null,finalizer: null};
-var NTI29014 = {size: 0,kind: 16,base: null,node: null,finalizer: null};
+var NTI30014 = {size: 0,kind: 16,base: null,node: null,finalizer: null};
 var NTI126 = {size: 0,kind: 37,base: null,node: null,finalizer: null};
-var NTI29008 = {size: 0,kind: 16,base: null,node: null,finalizer: null};
+var NTI30008 = {size: 0,kind: 16,base: null,node: null,finalizer: null};
 var NTI3446 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI3440 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI104 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
-var NTI12809 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI13009 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI3408 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI138 = {size: 0,kind: 28,base: null,node: null,finalizer: null};
 var NTI140 = {size: 0,kind: 29,base: null,node: null,finalizer: null};
-var NTI3485 = {size: 0,kind: 22,base: null,node: null,finalizer: null};
+var NTI3487 = {size: 0,kind: 22,base: null,node: null,finalizer: null};
 var NTI3424 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI3438 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI3442 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
@@ -31,8 +31,8 @@ var NNI3442 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
 NTI3442.node = NNI3442;
 var NNI3438 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
 NTI3438.node = NNI3438;
-NTI3485.base = NTI3424;
-var NNI3424 = {kind: 2, len: 4, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "parent", len: 0, typ: NTI3485, name: "parent", sons: null}, 
+NTI3487.base = NTI3424;
+var NNI3424 = {kind: 2, len: 4, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "parent", len: 0, typ: NTI3487, name: "parent", sons: null}, 
 {kind: 1, offset: "name", len: 0, typ: NTI140, name: "name", sons: null}, 
 {kind: 1, offset: "message", len: 0, typ: NTI138, name: "msg", sons: null}, 
 {kind: 1, offset: "trace", len: 0, typ: NTI138, name: "trace", sons: null}]};
@@ -42,24 +42,24 @@ NTI3408.node = NNI3408;
 NTI3424.base = NTI3408;
 NTI3438.base = NTI3424;
 NTI3442.base = NTI3438;
-var NNI12809 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI140, name: "Field0", sons: null}, 
+var NNI13009 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI140, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI104, name: "Field1", sons: null}]};
-NTI12809.node = NNI12809;
+NTI13009.node = NNI13009;
 var NNI3440 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
 NTI3440.node = NNI3440;
 NTI3440.base = NTI3438;
 var NNI3446 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
 NTI3446.node = NNI3446;
 NTI3446.base = NTI3424;
-NTI29008.base = NTI126;
-NTI29014.base = NTI118;
-function makeNimstrLit(c_13803) {
+NTI30008.base = NTI126;
+NTI30014.base = NTI118;
+function makeNimstrLit(c_14003) {
 
-    var ln = c_13803.length;
+    var ln = c_14003.length;
     var result = new Array(ln + 1);
     var i = 0;
     for (; i < ln; ++i) {
-      result[i] = c_13803.charCodeAt(i);
+      result[i] = c_14003.charCodeAt(i);
     }
     result[i] = 0; // terminating zero
     return result;
@@ -79,91 +79,91 @@ function SetConstr() {
       }
       return result;
     }
-function nimCopy(dest_19018, src_19019, ti_19020) {
+function nimCopy(dest_19217, src_19218, ti_19219) {
 
-var result_19429 = null;
-switch (ti_19020.kind) {
-case 21: case 22: case 23: case 5: if (!(isFatPointer_19001(ti_19020))) {
-result_19429 = src_19019;
+var result_19629 = null;
+switch (ti_19219.kind) {
+case 21: case 22: case 23: case 5: if (!(isFatPointer_19201(ti_19219))) {
+result_19629 = src_19218;
 }
 else {
-result_19429 = [src_19019[0], src_19019[1]];}
+result_19629 = [src_19218[0], src_19218[1]];}
 
 
 break;
-case 19:       if (dest_19018 === null || dest_19018 === undefined) {
-        dest_19018 = {};
+case 19:       if (dest_19217 === null || dest_19217 === undefined) {
+        dest_19217 = {};
       }
       else {
-        for (var key in dest_19018) { delete dest_19018[key]; }
+        for (var key in dest_19217) { delete dest_19217[key]; }
       }
-      for (var key in src_19019) { dest_19018[key] = src_19019[key]; }
-      result_19429 = dest_19018;
+      for (var key in src_19218) { dest_19217[key] = src_19218[key]; }
+      result_19629 = dest_19217;
     
 break;
-case 18: case 17: if (!((ti_19020.base == null))) {
-result_19429 = nimCopy(dest_19018, src_19019, ti_19020.base);
+case 18: case 17: if (!((ti_19219.base == null))) {
+result_19629 = nimCopy(dest_19217, src_19218, ti_19219.base);
 }
 else {
-if ((ti_19020.kind == 17)) {
-result_19429 = (dest_19018 === null || dest_19018 === undefined) ? {m_type: ti_19020} : dest_19018;}
+if ((ti_19219.kind == 17)) {
+result_19629 = (dest_19217 === null || dest_19217 === undefined) ? {m_type: ti_19219} : dest_19217;}
 else {
-result_19429 = (dest_19018 === null || dest_19018 === undefined) ? {} : dest_19018;}
+result_19629 = (dest_19217 === null || dest_19217 === undefined) ? {} : dest_19217;}
 }
-nimCopyAux(result_19429, src_19019, ti_19020.node);
+nimCopyAux(result_19629, src_19218, ti_19219.node);
 
 break;
-case 24: case 4: case 27: case 16:       if (src_19019 === null) {
-        result_19429 = null;
+case 24: case 4: case 27: case 16:       if (src_19218 === null) {
+        result_19629 = null;
       }
       else {
-        if (dest_19018 === null || dest_19018 === undefined) {
-          dest_19018 = new Array(src_19019.length);
+        if (dest_19217 === null || dest_19217 === undefined) {
+          dest_19217 = new Array(src_19218.length);
         }
         else {
-          dest_19018.length = src_19019.length;
+          dest_19217.length = src_19218.length;
         }
-        result_19429 = dest_19018;
-        for (var i = 0; i < src_19019.length; ++i) {
-          result_19429[i] = nimCopy(result_19429[i], src_19019[i], ti_19020.base);
+        result_19629 = dest_19217;
+        for (var i = 0; i < src_19218.length; ++i) {
+          result_19629[i] = nimCopy(result_19629[i], src_19218[i], ti_19219.base);
         }
       }
     
 break;
-case 28:       if (src_19019 !== null) {
-        result_19429 = src_19019.slice(0);
+case 28:       if (src_19218 !== null) {
+        result_19629 = src_19218.slice(0);
       }
     
 break;
 default: 
-result_19429 = src_19019;
+result_19629 = src_19218;
 break;
 }
-return result_19429;
+return result_19629;
 }
-function eqStrings(a_16403, b_16404) {
+function eqStrings(a_16603, b_16604) {
 
-    if (a_16403 == b_16404) return true;
-    if ((!a_16403) || (!b_16404)) return false;
-    var alen = a_16403.length;
-    if (alen != b_16404.length) return false;
+    if (a_16603 == b_16604) return true;
+    if ((!a_16603) || (!b_16604)) return false;
+    var alen = a_16603.length;
+    if (alen != b_16604.length) return false;
     for (var i = 0; i < alen; ++i)
-      if (a_16403[i] != b_16404[i]) return false;
+      if (a_16603[i] != b_16604[i]) return false;
     return true;
   }
-function arrayConstr(len_19603, value_19604, typ_19605) {
+function arrayConstr(len_19664, value_19665, typ_19666) {
 
-      var result = new Array(len_19603);
-      for (var i = 0; i < len_19603; ++i) result[i] = nimCopy(null, value_19604, typ_19605);
+      var result = new Array(len_19664);
+      for (var i = 0; i < len_19664; ++i) result[i] = nimCopy(null, value_19665, typ_19666);
       return result;
     }
-function cstrToNimstr(c_14003) {
+function cstrToNimstr(c_14203) {
 
-  var ln = c_14003.length;
+  var ln = c_14203.length;
   var result = new Array(ln);
   var r = 0;
   for (var i = 0; i < ln; ++i) {
-    var ch = c_14003.charCodeAt(i);
+    var ch = c_14203.charCodeAt(i);
 
     if (ch < 128) {
       result[r] = ch;
@@ -185,9 +185,9 @@ function cstrToNimstr(c_14003) {
   result[r] = 0; // terminating zero
   return result;
   }
-function toJSStr(s_14203) {
+function toJSStr(s_14403) {
 
-    var len = s_14203.length-1;
+    var len = s_14403.length-1;
     var asciiPart = new Array(len);
     var fcc = String.fromCharCode;
     var nonAsciiPart = null;
@@ -195,15 +195,15 @@ function toJSStr(s_14203) {
     for (var i = 0; i < len; ++i) {
       if (nonAsciiPart !== null) {
         var offset = (i - nonAsciiOffset) * 2;
-        var code = s_14203[i].toString(16);
+        var code = s_14403[i].toString(16);
         if (code.length == 1) {
           code = "0"+code;
         }
         nonAsciiPart[offset] = "%";
         nonAsciiPart[offset + 1] = code;
       }
-      else if (s_14203[i] < 128)
-        asciiPart[i] = fcc(s_14203[i]);
+      else if (s_14403[i] < 128)
+        asciiPart[i] = fcc(s_14403[i]);
       else {
         asciiPart.length = i;
         nonAsciiOffset = i;
@@ -215,285 +215,285 @@ function toJSStr(s_14203) {
     return (nonAsciiPart === null) ?
         asciiPart : asciiPart + decodeURIComponent(nonAsciiPart.join(""));
   }
-function raiseException(e_13206, ename_13207) {
+function raiseException(e_13406, ename_13407) {
 
-e_13206.name = ename_13207;
+e_13406.name = ename_13407;
 if ((excHandler == 0)) {
-unhandledException(e_13206);
+unhandledException(e_13406);
 }
 
-e_13206.trace = nimCopy(null, rawWriteStackTrace_13028(), NTI138);
-throw e_13206;}
+e_13406.trace = nimCopy(null, rawWriteStackTrace_13228(), NTI138);
+throw e_13406;}
 var nimvm_5887 = false;
 var nim_program_result = 0;
-var globalRaiseHook_10805 = [null];
-var localRaiseHook_10810 = [null];
-var outOfMemHook_10813 = [null];
-function isFatPointer_19001(ti_19003) {
+var globalRaiseHook_11005 = [null];
+var localRaiseHook_11010 = [null];
+var outOfMemHook_11013 = [null];
+function isFatPointer_19201(ti_19203) {
 
-var result_19004 = false;
+var result_19204 = false;
 BeforeRet: do {
-result_19004 = !((SetConstr(17, 16, 4, 18, 27, 19, 23, 22, 21)[ti_19003.base.kind] != undefined));
+result_19204 = !((SetConstr(17, 16, 4, 18, 27, 19, 23, 22, 21)[ti_19203.base.kind] != undefined));
 break BeforeRet;
 } while (false); 
-return result_19004;
+return result_19204;
 }
-function nimCopyAux(dest_19023, src_19024, n_19026) {
+function nimCopyAux(dest_19222, src_19223, n_19225) {
 
-switch (n_19026.kind) {
+switch (n_19225.kind) {
 case 0: 
 break;
-case 1:       dest_19023[n_19026.offset] = nimCopy(dest_19023[n_19026.offset], src_19024[n_19026.offset], n_19026.typ);
+case 1:       dest_19222[n_19225.offset] = nimCopy(dest_19222[n_19225.offset], src_19223[n_19225.offset], n_19225.typ);
     
 break;
 case 2: L1: do {
-var i_19415 = 0;
-var colontmp__19417 = 0;
-colontmp__19417 = (n_19026.len - 1);
-var res_19420 = 0;
+var i_19615 = 0;
+var colontmp__19617 = 0;
+colontmp__19617 = (n_19225.len - 1);
+var res_19620 = 0;
 L2: do {
 L3: while (true) {
-if (!(res_19420 <= colontmp__19417)) break L3;
-i_19415 = res_19420;
-nimCopyAux(dest_19023, src_19024, n_19026.sons[i_19415]);
-res_19420 += 1;
+if (!(res_19620 <= colontmp__19617)) break L3;
+i_19615 = res_19620;
+nimCopyAux(dest_19222, src_19223, n_19225.sons[i_19615]);
+res_19620 += 1;
 }
 } while(false);
 } while(false);
 
 break;
-case 3:       dest_19023[n_19026.offset] = nimCopy(dest_19023[n_19026.offset], src_19024[n_19026.offset], n_19026.typ);
-      for (var i = 0; i < n_19026.sons.length; ++i) {
-        nimCopyAux(dest_19023, src_19024, n_19026.sons[i][1]);
+case 3:       dest_19222[n_19225.offset] = nimCopy(dest_19222[n_19225.offset], src_19223[n_19225.offset], n_19225.typ);
+      for (var i = 0; i < n_19225.sons.length; ++i) {
+        nimCopyAux(dest_19222, src_19223, n_19225.sons[i][1]);
       }
     
 break;
 }
 }
-function add_10829(x_10832, x_10832_Idx, y_10833) {
+function add_11029(x_11032, x_11032_Idx, y_11033) {
 
-        var len = x_10832[0].length-1;
-        for (var i = 0; i < y_10833.length; ++i) {
-          x_10832[0][len] = y_10833.charCodeAt(i);
+        var len = x_11032[0].length-1;
+        for (var i = 0; i < y_11033.length; ++i) {
+          x_11032[0][len] = y_11033.charCodeAt(i);
           ++len;
         }
-        x_10832[0][len] = 0
+        x_11032[0][len] = 0
       }
-function auxWriteStackTrace_12804(f_12806) {
+function auxWriteStackTrace_13004(f_13006) {
 
 var Tmp3;
-var result_12807 = [null];
-var it_12815 = f_12806;
-var i_12816 = 0;
-var total_12817 = 0;
-var tempFrames_12821 = arrayConstr(64, {Field0: null, Field1: 0}, NTI12809);
+var result_13007 = [null];
+var it_13015 = f_13006;
+var i_13016 = 0;
+var total_13017 = 0;
+var tempFrames_13021 = arrayConstr(64, {Field0: null, Field1: 0}, NTI13009);
 L1: do {
 L2: while (true) {
-if (!!((it_12815 == null))) Tmp3 = false; else {Tmp3 = (i_12816 <= 63); }if (!Tmp3) break L2;
-tempFrames_12821[i_12816].Field0 = it_12815.procname;
-tempFrames_12821[i_12816].Field1 = it_12815.line;
-i_12816 += 1;
-total_12817 += 1;
-it_12815 = it_12815.prev;
+if (!!((it_13015 == null))) Tmp3 = false; else {Tmp3 = (i_13016 <= 63); }if (!Tmp3) break L2;
+tempFrames_13021[i_13016].Field0 = it_13015.procname;
+tempFrames_13021[i_13016].Field1 = it_13015.line;
+i_13016 += 1;
+total_13017 += 1;
+it_13015 = it_13015.prev;
 }
 } while(false);
 L4: do {
 L5: while (true) {
-if (!!((it_12815 == null))) break L5;
-total_12817 += 1;
-it_12815 = it_12815.prev;
+if (!!((it_13015 == null))) break L5;
+total_13017 += 1;
+it_13015 = it_13015.prev;
 }
 } while(false);
-result_12807[0] = nimCopy(null, makeNimstrLit(""), NTI138);
-if (!((total_12817 == i_12816))) {
-if (result_12807[0] != null) { result_12807[0] = (result_12807[0].slice(0, -1)).concat(makeNimstrLit("(")); } else { result_12807[0] = makeNimstrLit("(");};
-if (result_12807[0] != null) { result_12807[0] = (result_12807[0].slice(0, -1)).concat(cstrToNimstr(((total_12817 - i_12816))+"")); } else { result_12807[0] = cstrToNimstr(((total_12817 - i_12816))+"");};
-if (result_12807[0] != null) { result_12807[0] = (result_12807[0].slice(0, -1)).concat(makeNimstrLit(" calls omitted) ...\x0A")); } else { result_12807[0] = makeNimstrLit(" calls omitted) ...\x0A");};
+result_13007[0] = nimCopy(null, makeNimstrLit(""), NTI138);
+if (!((total_13017 == i_13016))) {
+if (result_13007[0] != null) { result_13007[0] = (result_13007[0].slice(0, -1)).concat(makeNimstrLit("(")); } else { result_13007[0] = makeNimstrLit("(");};
+if (result_13007[0] != null) { result_13007[0] = (result_13007[0].slice(0, -1)).concat(cstrToNimstr(((total_13017 - i_13016))+"")); } else { result_13007[0] = cstrToNimstr(((total_13017 - i_13016))+"");};
+if (result_13007[0] != null) { result_13007[0] = (result_13007[0].slice(0, -1)).concat(makeNimstrLit(" calls omitted) ...\x0A")); } else { result_13007[0] = makeNimstrLit(" calls omitted) ...\x0A");};
 }
 
 L6: do {
-var j_13015 = 0;
-var colontmp__13021 = 0;
-colontmp__13021 = (i_12816 - 1);
-var res_13024 = colontmp__13021;
+var j_13215 = 0;
+var colontmp__13221 = 0;
+colontmp__13221 = (i_13016 - 1);
+var res_13224 = colontmp__13221;
 L7: do {
 L8: while (true) {
-if (!(0 <= res_13024)) break L8;
-j_13015 = res_13024;
-add_10829(result_12807, 0, tempFrames_12821[j_13015].Field0);
-if ((0 < tempFrames_12821[j_13015].Field1)) {
-if (result_12807[0] != null) { result_12807[0] = (result_12807[0].slice(0, -1)).concat(makeNimstrLit(", line: ")); } else { result_12807[0] = makeNimstrLit(", line: ");};
-if (result_12807[0] != null) { result_12807[0] = (result_12807[0].slice(0, -1)).concat(cstrToNimstr((tempFrames_12821[j_13015].Field1)+"")); } else { result_12807[0] = cstrToNimstr((tempFrames_12821[j_13015].Field1)+"");};
+if (!(0 <= res_13224)) break L8;
+j_13215 = res_13224;
+add_11029(result_13007, 0, tempFrames_13021[j_13215].Field0);
+if ((0 < tempFrames_13021[j_13215].Field1)) {
+if (result_13007[0] != null) { result_13007[0] = (result_13007[0].slice(0, -1)).concat(makeNimstrLit(", line: ")); } else { result_13007[0] = makeNimstrLit(", line: ");};
+if (result_13007[0] != null) { result_13007[0] = (result_13007[0].slice(0, -1)).concat(cstrToNimstr((tempFrames_13021[j_13215].Field1)+"")); } else { result_13007[0] = cstrToNimstr((tempFrames_13021[j_13215].Field1)+"");};
 }
 
-if (result_12807[0] != null) { result_12807[0] = (result_12807[0].slice(0, -1)).concat(makeNimstrLit("\x0A")); } else { result_12807[0] = makeNimstrLit("\x0A");};
-res_13024 -= 1;
+if (result_13007[0] != null) { result_13007[0] = (result_13007[0].slice(0, -1)).concat(makeNimstrLit("\x0A")); } else { result_13007[0] = makeNimstrLit("\x0A");};
+res_13224 -= 1;
 }
 } while(false);
 } while(false);
-return result_12807[0];
+return result_13007[0];
 }
-function rawWriteStackTrace_13028() {
+function rawWriteStackTrace_13228() {
 
-var result_13030 = null;
+var result_13230 = null;
 if (!((framePtr == null))) {
-result_13030 = nimCopy(null, (makeNimstrLit("Traceback (most recent call last)\x0A").slice(0,-1)).concat(auxWriteStackTrace_12804(framePtr)), NTI138);
+result_13230 = nimCopy(null, (makeNimstrLit("Traceback (most recent call last)\x0A").slice(0,-1)).concat(auxWriteStackTrace_13004(framePtr)), NTI138);
 }
 else {
-result_13030 = nimCopy(null, makeNimstrLit("No stack traceback available\x0A"), NTI138);
+result_13230 = nimCopy(null, makeNimstrLit("No stack traceback available\x0A"), NTI138);
 }
 
-return result_13030;
+return result_13230;
 }
-function unhandledException(e_13054) {
+function unhandledException(e_13253) {
 
 var Tmp1;
-var buf_13055 = /**/[makeNimstrLit("")];
-if (!!(eqStrings(e_13054.message, null))) Tmp1 = false; else {Tmp1 = !((e_13054.message[0] == 0)); }if (Tmp1) {
-if (buf_13055[0] != null) { buf_13055[0] = (buf_13055[0].slice(0, -1)).concat(makeNimstrLit("Error: unhandled exception: ")); } else { buf_13055[0] = makeNimstrLit("Error: unhandled exception: ");};
-if (buf_13055[0] != null) { buf_13055[0] = (buf_13055[0].slice(0, -1)).concat(e_13054.message); } else { buf_13055[0] = e_13054.message;};
+var buf_13254 = /**/[makeNimstrLit("")];
+if (!!(eqStrings(e_13253.message, null))) Tmp1 = false; else {Tmp1 = !((e_13253.message[0] == 0)); }if (Tmp1) {
+if (buf_13254[0] != null) { buf_13254[0] = (buf_13254[0].slice(0, -1)).concat(makeNimstrLit("Error: unhandled exception: ")); } else { buf_13254[0] = makeNimstrLit("Error: unhandled exception: ");};
+if (buf_13254[0] != null) { buf_13254[0] = (buf_13254[0].slice(0, -1)).concat(e_13253.message); } else { buf_13254[0] = e_13253.message;};
 }
 else {
-if (buf_13055[0] != null) { buf_13055[0] = (buf_13055[0].slice(0, -1)).concat(makeNimstrLit("Error: unhandled exception")); } else { buf_13055[0] = makeNimstrLit("Error: unhandled exception");};
+if (buf_13254[0] != null) { buf_13254[0] = (buf_13254[0].slice(0, -1)).concat(makeNimstrLit("Error: unhandled exception")); } else { buf_13254[0] = makeNimstrLit("Error: unhandled exception");};
 }
 
-if (buf_13055[0] != null) { buf_13055[0] = (buf_13055[0].slice(0, -1)).concat(makeNimstrLit(" [")); } else { buf_13055[0] = makeNimstrLit(" [");};
-add_10829(buf_13055, 0, e_13054.name);
-if (buf_13055[0] != null) { buf_13055[0] = (buf_13055[0].slice(0, -1)).concat(makeNimstrLit("]\x0A")); } else { buf_13055[0] = makeNimstrLit("]\x0A");};
-if (buf_13055[0] != null) { buf_13055[0] = (buf_13055[0].slice(0, -1)).concat(rawWriteStackTrace_13028()); } else { buf_13055[0] = rawWriteStackTrace_13028();};
-var cbuf_13201 = toJSStr(buf_13055[0]);
+if (buf_13254[0] != null) { buf_13254[0] = (buf_13254[0].slice(0, -1)).concat(makeNimstrLit(" [")); } else { buf_13254[0] = makeNimstrLit(" [");};
+add_11029(buf_13254, 0, e_13253.name);
+if (buf_13254[0] != null) { buf_13254[0] = (buf_13254[0].slice(0, -1)).concat(makeNimstrLit("]\x0A")); } else { buf_13254[0] = makeNimstrLit("]\x0A");};
+if (buf_13254[0] != null) { buf_13254[0] = (buf_13254[0].slice(0, -1)).concat(rawWriteStackTrace_13228()); } else { buf_13254[0] = rawWriteStackTrace_13228();};
+var cbuf_13401 = toJSStr(buf_13254[0]);
 framePtr = null;
   if (typeof(Error) !== "undefined") {
-    throw new Error(cbuf_13201);
+    throw new Error(cbuf_13401);
   }
   else {
-    throw cbuf_13201;
+    throw cbuf_13401;
   }
   }
 function raiseOverflow() {
 
-var e_13641 = null;
-e_13641 = {m_type: NTI3442, parent: null, name: null, message: null, trace: null};
-e_13641.message = nimCopy(null, makeNimstrLit("over- or underflow"), NTI138);
-e_13641.parent = null;
-raiseException(e_13641, "OverflowError");
+var e_13840 = null;
+e_13840 = {m_type: NTI3442, parent: null, name: null, message: null, trace: null};
+e_13840.message = nimCopy(null, makeNimstrLit("over- or underflow"), NTI138);
+e_13840.parent = null;
+raiseException(e_13840, "OverflowError");
 }
 function raiseDivByZero() {
 
-var e_13659 = null;
-e_13659 = {m_type: NTI3440, parent: null, name: null, message: null, trace: null};
-e_13659.message = nimCopy(null, makeNimstrLit("division by zero"), NTI138);
-e_13659.parent = null;
-raiseException(e_13659, "DivByZeroError");
+var e_13858 = null;
+e_13858 = {m_type: NTI3440, parent: null, name: null, message: null, trace: null};
+e_13858.message = nimCopy(null, makeNimstrLit("division by zero"), NTI138);
+e_13858.parent = null;
+raiseException(e_13858, "DivByZeroError");
 }
-var canvas_29006 = /**/[document.getElementById("glcanvas")];
-function sysFatal_21621(message_21627) {
+var canvas_30006 = /**/[document.getElementById("glcanvas")];
+function sysFatal_21821(message_21827) {
 
 var F={procname:"sysFatal.sysFatal",prev:framePtr,filename:"lib\\system.nim",line:0};
 framePtr = F;
-F.line = 2617;
-var e_21629 = null;
-e_21629 = {m_type: NTI3446, parent: null, name: null, message: null, trace: null};
-F.line = 2619;
-e_21629.message = nimCopy(null, message_21627, NTI138);
-F.line = 2620;
-raiseException(e_21629, "AssertionError");
+F.line = 2646;
+var e_21829 = null;
+e_21829 = {m_type: NTI3446, parent: null, name: null, message: null, trace: null};
+F.line = 2648;
+e_21829.message = nimCopy(null, message_21827, NTI138);
+F.line = 2649;
+raiseException(e_21829, "AssertionError");
 framePtr = F.prev;
 }
-function raiseAssert_21616(msg_21618) {
+function raiseAssert_21816(msg_21818) {
 
 var F={procname:"system.raiseAssert",prev:framePtr,filename:"lib\\system.nim",line:0};
 framePtr = F;
-sysFatal_21621(msg_21618);
+sysFatal_21821(msg_21818);
 framePtr = F.prev;
 }
-function failedAssertImpl_21639(msg_21641) {
+function failedAssertImpl_21839(msg_21841) {
 
 var F={procname:"system.failedAssertImpl",prev:framePtr,filename:"lib\\system.nim",line:0};
 framePtr = F;
-raiseAssert_21616(msg_21641);
+raiseAssert_21816(msg_21841);
 framePtr = F.prev;
 }
-function getContextWebgl_27957(c_27959) {
+function getContextWebgl_28955(c_28957) {
 
-var result_27960 = null;
+var result_28958 = null;
 var F={procname:"webgl.getContextWebgl",prev:framePtr,filename:"C:\\Users\\stisa\\OneDrive\\Progetti\\webgl\\src\\webgl.nim",line:0};
 framePtr = F;
-F.line = 425;
-result_27960 = c_27959.getContext("webgl");
-if ((result_27960 === null)) {
-F.line = 426;
-result_27960 = c_27959.getContext("experimental-webgl");
+F.line = 423;
+result_28958 = c_28957.getContext("webgl");
+if ((result_28958 === null)) {
+F.line = 424;
+result_28958 = c_28957.getContext("experimental-webgl");
 }
 
-if (!(!((result_27960 === null)))) {
-failedAssertImpl_21639(makeNimstrLit("not isNil(result) "));
+if (!(!((result_28958 === null)))) {
+failedAssertImpl_21839(makeNimstrLit("not isNil(result) "));
 }
 
 framePtr = F.prev;
-return result_27960;
+return result_28958;
 }
-var gl_29007 = /**/[getContextWebgl_27957(canvas_29006[0])];
-var vertices_29013 = /**/[nimCopy(null, [-5.0000000000000000e-001, 5.0000000000000000e-001, 0.0, -5.0000000000000000e-001, -5.0000000000000000e-001, 0.0, 5.0000000000000000e-001, -5.0000000000000000e-001, 0.0], NTI29008)];
-var indices_29016 = /**/[nimCopy(null, [0, 1, 2], NTI29014)];
-var vertex_buffer_29017 = /**/[gl_29007[0].createBuffer()];
-gl_29007[0].bindBuffer(34962, vertex_buffer_29017[0]);
-gl_29007[0].bufferData(34962, new Float32Array(vertices_29013[0]), 35044);
-gl_29007[0].bindBuffer(34962, null);
-var Index_Buffer_29052 = /**/[gl_29007[0].createBuffer()];
-gl_29007[0].bindBuffer(34963, Index_Buffer_29052[0]);
-gl_29007[0].bufferData(34963, new Uint16Array(indices_29016[0]), 35044);
-gl_29007[0].bindBuffer(34963, null);
-var vertCode_29087 = /**/[makeNimstrLit("attribute vec3 coordinates;void main(void) { gl_Position = vec4(coordinates, 1.0);}")];
-var vertShader_29097 = /**/[gl_29007[0].createShader(35633)];
-gl_29007[0].shaderSource(vertShader_29097[0], toJSStr(vertCode_29087[0]));
-gl_29007[0].compileShader(vertShader_29097[0]);
-function getStatus_28029(gl_28031, what_28032) {
+var gl_30007 = /**/[getContextWebgl_28955(canvas_30006[0])];
+var vertices_30013 = /**/[nimCopy(null, [-5.0000000000000000e-001, 5.0000000000000000e-001, 0.0, -5.0000000000000000e-001, -5.0000000000000000e-001, 0.0, 5.0000000000000000e-001, -5.0000000000000000e-001, 0.0], NTI30008)];
+var indices_30016 = /**/[nimCopy(null, [0, 1, 2], NTI30014)];
+var vertex_buffer_30017 = /**/[gl_30007[0].createBuffer()];
+gl_30007[0].bindBuffer(34962, vertex_buffer_30017[0]);
+gl_30007[0].bufferData(34962, new Float32Array(vertices_30013[0]), 35044);
+gl_30007[0].bindBuffer(34962, null);
+var Index_Buffer_30052 = /**/[gl_30007[0].createBuffer()];
+gl_30007[0].bindBuffer(34963, Index_Buffer_30052[0]);
+gl_30007[0].bufferData(34963, new Uint16Array(indices_30016[0]), 35044);
+gl_30007[0].bindBuffer(34963, null);
+var vertCode_30087 = /**/[makeNimstrLit("attribute vec3 coordinates;void main(void) { gl_Position = vec4(coordinates, 1.0);}")];
+var vertShader_30096 = /**/[gl_30007[0].createShader(35633)];
+gl_30007[0].shaderSource(vertShader_30096[0], toJSStr(vertCode_30087[0]));
+gl_30007[0].compileShader(vertShader_30096[0]);
+function getStatus_29029(gl_29031, what_29032) {
 
-var result_28033 = false;
+var result_29033 = false;
 var F={procname:"webgl.getStatus",prev:framePtr,filename:"C:\\Users\\stisa\\OneDrive\\Progetti\\webgl\\src\\webgl.nim",line:0};
 framePtr = F;
-F.line = 446;
-result_28033 = gl_28031.getShaderParameter(what_28032, gl_28031.COMPILE_STATUS);framePtr = F.prev;
-return result_28033;
+F.line = 444;
+result_29033 = gl_29031.getShaderParameter(what_29032, gl_29031.COMPILE_STATUS);framePtr = F.prev;
+return result_29033;
 }
-if (!(getStatus_28029(gl_29007[0], vertShader_29097[0]))) {
+if (!(getStatus_29029(gl_30007[0], vertShader_30096[0]))) {
 console.log("error vs");
 }
 
-var fragCode_29101 = /**/[makeNimstrLit("void main(void){gl_FragColor = vec4(0.0, 0.0, 0.0, 0.1);}")];
-var fragShader_29111 = /**/[gl_29007[0].createShader(35632)];
-gl_29007[0].shaderSource(fragShader_29111[0], toJSStr(fragCode_29101[0]));
-gl_29007[0].compileShader(fragShader_29111[0]);
-if (!(getStatus_28029(gl_29007[0], fragShader_29111[0]))) {
+var fragCode_30100 = /**/[makeNimstrLit("void main(void){gl_FragColor = vec4(0.0, 0.0, 0.0, 0.1);}")];
+var fragShader_30109 = /**/[gl_30007[0].createShader(35632)];
+gl_30007[0].shaderSource(fragShader_30109[0], toJSStr(fragCode_30100[0]));
+gl_30007[0].compileShader(fragShader_30109[0]);
+if (!(getStatus_29029(gl_30007[0], fragShader_30109[0]))) {
 console.log("error fg");
 }
 
-var shaderProgram_29115 = /**/[gl_29007[0].createProgram()];
-gl_29007[0].attachShader(shaderProgram_29115[0], vertShader_29097[0]);
-gl_29007[0].attachShader(shaderProgram_29115[0], fragShader_29111[0]);
-gl_29007[0].linkProgram(shaderProgram_29115[0]);
-function getStatus_28034(gl_28036, what_28037) {
+var shaderProgram_30113 = /**/[gl_30007[0].createProgram()];
+gl_30007[0].attachShader(shaderProgram_30113[0], vertShader_30096[0]);
+gl_30007[0].attachShader(shaderProgram_30113[0], fragShader_30109[0]);
+gl_30007[0].linkProgram(shaderProgram_30113[0]);
+function getStatus_29034(gl_29036, what_29037) {
 
-var result_28038 = false;
+var result_29038 = false;
 var F={procname:"webgl.getStatus",prev:framePtr,filename:"C:\\Users\\stisa\\OneDrive\\Progetti\\webgl\\src\\webgl.nim",line:0};
 framePtr = F;
-F.line = 448;
-result_28038 = gl_28036.getProgramParameter(what_28037, gl_28036.LINK_STATUS);framePtr = F.prev;
-return result_28038;
+F.line = 446;
+result_29038 = gl_29036.getProgramParameter(what_29037, gl_29036.LINK_STATUS);framePtr = F.prev;
+return result_29038;
 }
-if (!(getStatus_28034(gl_29007[0], shaderProgram_29115[0]))) {
+if (!(getStatus_29034(gl_30007[0], shaderProgram_30113[0]))) {
 console.log("error p");
 }
 
-gl_29007[0].useProgram(shaderProgram_29115[0]);
-gl_29007[0].bindBuffer(34962, vertex_buffer_29017[0]);
-gl_29007[0].bindBuffer(34963, Index_Buffer_29052[0]);
-var coord_29139 = /**/[gl_29007[0].getAttribLocation(shaderProgram_29115[0], "coordinates")];
-gl_29007[0].vertexAttribPointer(coord_29139[0], 3, 5126, false, 0, 0);
-gl_29007[0].enableVertexAttribArray(coord_29139[0]);
-gl_29007[0].clearColor(5.0000000000000000e-001, 5.0000000000000000e-001, 5.0000000000000000e-001, 9.0000000000000002e-001);
-gl_29007[0].enable(2929);
-gl_29007[0].clear(16384);
-gl_29007[0].viewport(0, 0, canvas_29006[0].width, canvas_29006[0].height);
-gl_29007[0].drawElements(4, 3, 5123, 0);
+gl_30007[0].useProgram(shaderProgram_30113[0]);
+gl_30007[0].bindBuffer(34962, vertex_buffer_30017[0]);
+gl_30007[0].bindBuffer(34963, Index_Buffer_30052[0]);
+var coord_30137 = /**/[gl_30007[0].getAttribLocation(shaderProgram_30113[0], "coordinates")];
+gl_30007[0].vertexAttribPointer(coord_30137[0], 3, 5126, false, 0, 0);
+gl_30007[0].enableVertexAttribArray(coord_30137[0]);
+gl_30007[0].clearColor(5.0000000000000000e-001, 5.0000000000000000e-001, 5.0000000000000000e-001, 9.0000000000000002e-001);
+gl_30007[0].enable(2929);
+gl_30007[0].clear(16384);
+gl_30007[0].viewport(0, 0, canvas_30006[0].width, canvas_30006[0].height);
+gl_30007[0].drawElements(4, 3, 5123, 0);

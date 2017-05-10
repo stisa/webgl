@@ -1156,12 +1156,18 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 div.search_results {
   background-color: antiquewhite;
   margin: 3em;
+  border-style: inset;
   padding: 1em;
-  border: 1px solid #4d4d4d;
+}
+#searchInput {
+	width: 100%;
+	margin-bottom: 0.5em;
+}
+
+#groupBy {
+	margin-bottom: 0.5em;	
 }
 </style>
-
-<script type="text/javascript" src="../dochack.js"></script>
 
 <script type="text/javascript">
 function togglepragma(d) {
@@ -1188,7 +1194,16 @@ function main() {
   }
 }
 </script>
-
+<script>
+	// Detects shift+f to focuses the search box
+	document.addEventListener('keydown', function(event) {
+	  if (event.keyCode == 70 && event.shiftKey) {
+	  	event.preventDefault() // avoids writing F on the search box
+	  	var input = document.getElementById("searchInput");
+			input.focus();
+	  } 
+	}, true);
+</script>
 </head>
 <body onload="main()">
 <div class="document" id="documentId">
@@ -1196,17 +1211,6 @@ function main() {
     <h1 class="title">Module enums</h1>
     <div class="row">
   <div class="three columns">
-  <div>
-    Search: <input type="text" id="searchInput"
-      onkeyup="search()" />
-  </div>
-  <div>
-    Group by:
-    <select onchange="groupBy(this.value)">
-      <option value="section">Section</option>
-      <option value="type">Type</option>
-    </select>
-  </div>
   <ul class="simple simple-toc" id="toc-list">
 <li>
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
@@ -1369,7 +1373,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small>Made with Nim. Generated: 2017-03-11 21:22:26 UTC</small>
+        <small>Made with Nim. Generated: 2017-05-10 19:10:14 UTC</small>
       </div>
     </div>
   </div>

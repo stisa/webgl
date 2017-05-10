@@ -9,8 +9,6 @@ type
   CanvasObj {.importc.} = object of dom.Element
     width*: int
     height*:int
-    clientWidth*: int
-    clientHeight*:int
 
   ArrayBufferView* = ref ArrayBufferViewObj
   ArrayBufferViewObj {. importc .} = object of RootObj

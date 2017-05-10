@@ -1,5 +1,5 @@
 # Package
-version       = "0.1.2"
+version       = "0.2.0"
 author        = "stisa"
 description   = "Basic wrapper for WebGL."
 license       = "MIT"
@@ -9,7 +9,7 @@ srcDir = "src"
 skipDirs = @["oldwrapper","templates"]
 
 # Deps
-requires: "nim >= 0.16.0"
+requires: "nim >= 0.16.1"
 
 import ospaths
 

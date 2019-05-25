@@ -436,7 +436,7 @@ proc getBoundingClientRect*(c:Canvas):tuple[top,bottom,left,right:float] =
   """}
   result = (t,b,lf,r)
 
-proc log*(str:varargs[untyped]) = {.emit: "console.log(`str`);".}
+proc log*(str: string) = echo str
 
 proc requestAnimationFrame*(fn:proc(time:float))= {.emit:"window.requestAnimationFrame(`fn`);".} 
 
